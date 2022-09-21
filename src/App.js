@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import styled from "styled-components";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BackgroundStyle className="App">
+      <Container>
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+        </Routes>
+      </Container>
+    </BackgroundStyle>
   );
 }
+
+const BackgroundStyle = styled.div`
+  background-color: #dcdcdc;
+`;
+
+const Container = styled.div`
+  max-width: 500px;
+  height: 100vh;
+  margin: 0 auto;
+  overflow-y: auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: white;
+`;
 
 export default App;
