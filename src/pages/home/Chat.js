@@ -8,8 +8,8 @@ const Chat = (props) => {
   return (
     <div
       style={{
-        width: "90%",
-        height: "10%",
+        width: "85%",
+        height: 67,
         backgroundColor: "#E8F5FE",
         borderRadius: "35px",
         display: "flex",
@@ -18,11 +18,12 @@ const Chat = (props) => {
         marginTop: "7%",
         boxShadow: " 0px 0px 20px rgba(70, 70, 70, 0.6)",
         position: "relative",
+        zIndex: 10,
       }}
     >
       <img
         src={char}
-        style={{ position: "absolute", left: 10, top: -5, width: window.innerWidth > 500 ? "18%" : "25%" }}
+        style={{ position: "absolute", left: 10, top: -5, width: window.innerWidth > 500 ? "16%" : "20%" }}
       />
       <Typing
         onDone={onDone}
@@ -32,7 +33,7 @@ const Chat = (props) => {
         cursor
         // fixedWidth
         style={{
-          width: window.innerWidth > 500 ? "60%" : "55%",
+          width: window.innerWidth > 500 ? "65%" : "55%",
           textAlign: "left",
           marginLeft: "17%",
           fontSize: "16px",

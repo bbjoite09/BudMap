@@ -28,7 +28,7 @@ const Container = styled.div`
   max-width: 500px;
   height: 100vh;
   margin: 0 auto;
-  overflow-y: auto;
+  overflow: hidden;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-color: white;
