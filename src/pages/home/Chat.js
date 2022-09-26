@@ -9,7 +9,7 @@ const Chat = (props) => {
     <div
       style={{
         width: "90%",
-        height: "8%",
+        height: "10%",
         backgroundColor: "#E8F5FE",
         borderRadius: "35px",
         display: "flex",
@@ -20,15 +20,19 @@ const Chat = (props) => {
         position: "relative",
       }}
     >
-      <img src={char} style={{ position: "absolute", left: 10, top: -5, width: 85 }} />
+      <img
+        src={char}
+        style={{ position: "absolute", left: 10, top: -5, width: window.innerWidth > 500 ? "18%" : "25%" }}
+      />
       <Typing
         onDone={onDone}
         Tag="div"
         preDelay={1500}
         postDelay={1500}
         cursor
+        // fixedWidth
         style={{
-          width: "55%",
+          width: window.innerWidth > 500 ? "60%" : "55%",
           textAlign: "left",
           marginLeft: "17%",
           fontSize: "16px",
@@ -39,10 +43,6 @@ const Chat = (props) => {
       >
         {children}
       </Typing>
-      {/* <TypingMultiline
-        strs={`안녕~ 난 너희를 도와줄 디노야. 
-        버들로에 온 걸 환영해!`}
-      /> */}
     </div>
   );
 };

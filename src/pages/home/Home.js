@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Chat from "./Chat";
-import { chatTutorial } from "../../static/strings/chatTutorial";
+import { string } from "../../static/strings/string";
 import background from "../../static/images/home/background.png";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [next, setNext] = useState(0);
@@ -16,15 +17,21 @@ const Home = () => {
         position: "relative",
       }}
     >
-      <img src={background} style={{ position: "absolute", width: "100%", height: "100vh" }} />
+      <img src={background} style={{ position: "absolute", width: "100%", marginTop: "28%" }} />
+      <Link to="/firstSection">
+        <div style={{ position: "absolute", width: "100%", height: "40%", top: "15%" }} />
+      </Link>
+      <Link to="/secondSection">
+        <div style={{ position: "absolute", width: "80%", height: "30%", top: "55%", left: 0 }} />
+      </Link>
       <Chat
         onDone={() => {
-          if (next < chatTutorial.length - 1) {
+          if (next < string.chatTutorial.length - 1) {
             setNext(next + 1);
           }
         }}
       >
-        {chatTutorial[next]}
+        {string.chatTutorial[next]}
       </Chat>
     </div>
   );
