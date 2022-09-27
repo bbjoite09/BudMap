@@ -54,14 +54,7 @@ const FirstSection = () => {
         }}
         style={{ position: "absolute", width: "15%", left: window.innerWidth <= 500 ? "8%" : "10%", top: "45%" }}
       />
-      <Modal
-        isOpen={isOpen1}
-        setOpen={setOpen1}
-        title={string.storeInfo.store1.title}
-        describe={string.storeInfo.store1.describe}
-        src1={store1_1}
-        src2={store1_2}
-      />
+      <Modal isOpen={isOpen1} setOpen={setOpen1} storeNum={"store1"} src1={store1_1} src2={store1_2} />
       <img
         src={ic2}
         onClick={() => {
@@ -69,14 +62,7 @@ const FirstSection = () => {
         }}
         style={{ position: "absolute", width: "13%", right: "6%", top: "37%" }}
       />
-      <Modal
-        isOpen={isOpen2}
-        setOpen={setOpen2}
-        title={string.storeInfo.store2.title}
-        describe={string.storeInfo.store2.describe}
-        src1={store2_1}
-        src2={store2_2}
-      />
+      <Modal isOpen={isOpen2} setOpen={setOpen2} storeNum={"store2"} src1={store2_1} src2={store2_2} />
     </div>
   );
 };

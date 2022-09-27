@@ -49,14 +49,7 @@ const SecondSection = () => {
         }}
         style={{ position: "absolute", width: "13%", left: "28%", top: "45%" }}
       />
-      <Modal
-        isOpen={isOpen3}
-        setOpen={setOpen3}
-        title={string.storeInfo.store3.title}
-        describe={string.storeInfo.store3.describe}
-        src1={store3_1}
-        src2={store3_2}
-      />
+      <Modal isOpen={isOpen3} setOpen={setOpen3} storeNum={"store3"} src1={store3_1} src2={store3_2} />
 
       <img
         src={ic4}
@@ -65,14 +58,7 @@ const SecondSection = () => {
         }}
         style={{ position: "absolute", width: "13%", left: "45%", top: "46%" }}
       />
-      <Modal
-        isOpen={isOpen4}
-        setOpen={setOpen4}
-        title={string.storeInfo.store4.title}
-        describe={string.storeInfo.store4.describe}
-        src1={store4_1}
-        src2={store4_2}
-      />
+      <Modal isOpen={isOpen4} setOpen={setOpen4} storeNum={"store4"} src1={store4_1} src2={store4_2} />
       <img
         src={ic5}
         onClick={() => {
@@ -80,14 +66,7 @@ const SecondSection = () => {
         }}
         style={{ position: "absolute", width: "13%", left: "38%", top: "35%" }}
       />
-      <Modal
-        isOpen={isOpen5}
-        setOpen={setOpen5}
-        title={string.storeInfo.store5.title}
-        describe={string.storeInfo.store5.describe}
-        src1={store5_1}
-        src2={store5_2}
-      />
+      <Modal isOpen={isOpen5} setOpen={setOpen5} storeNum={"store5"} src1={store5_1} src2={store5_2} />
     </div>
   );
 };

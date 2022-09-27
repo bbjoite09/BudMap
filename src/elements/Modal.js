@@ -1,15 +1,27 @@
-import React from "react";
-import close from "../static/images/modal/close.png";
-import Typography from "./Typography";
+import React, { useState } from "react";
 import Slider from "react-slick";
-import styled from "styled-components";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import styled from "styled-components";
+import close from "../static/images/modal/close.png";
+import quizeInfo from "../static/strings/quizeInfo";
+import { string } from "../static/strings/string";
 import RoundButton from "./RoundButton";
+import Typography from "./Typography";
 
 const MyModal = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { isOpen, setOpen, title, describe, src1, src2 } = props;
+  const { isOpen, setOpen, storeNum, src1, src2 } = props;
+  const [isQuize, setQuize] = useState(false);
+  const [isCorrect, setCorrect] = useState(["#C6C6C6", "#C6C6C6", "#C6C6C6"]);
+
+  const setButtonColor = (ans, idx) => {
+    if (ans == quizeInfo[storeNum].answer) {
+      setCorrect([...isCorrect.slice(0, idx), "#A9DABE", ...isCorrect.slice(idx + 1)]);
+    } else if (ans != quizeInfo[storeNum].answer) {
+      setCorrect([...isCorrect.slice(0, idx), "#EF6262", ...isCorrect.slice(idx + 1)]);
+    }
+  };
 
   return (
     <>
@@ -28,7 +40,9 @@ const MyModal = (props) => {
             onClick={() => setOpen(false)}
           />
 
+          {/* 가게설명 - 앞면 */}
           <div
+            id="modal"
             style={{
               width: window.innerWidth <= 500 ? "85%" : "400px",
               minHeight: "60vh",
@@ -56,9 +70,9 @@ const MyModal = (props) => {
               <img src={close} />
             </button>
             <Typography type="title" margin="0 0 3% 0">
-              {title}
+              {string.storeInfo[storeNum].title}
             </Typography>
-            <Typography>{describe}</Typography>
+            <Typography>{string.storeInfo[storeNum].describe}</Typography>
             <>
               <MySlider {...settings} style={{ zIndex: "0", width: "110%", marginTop: "3%" }}>
                 <>
@@ -73,10 +87,77 @@ const MyModal = (props) => {
                 </>
               </MySlider>
             </>
-            <RoundButton color="#C6C6C6" width="80%" margin="4% 0 4% 0">
+            <RoundButton
+              color="#C6C6C6"
+              width="80%"
+              margin="4% 0 4% 0"
+              onClick={() => {
+                setQuize(true);
+              }}
+            >
               퀴즈를 풀어볼까요?
             </RoundButton>
           </div>
+
+          {/* 퀴즈 - 뒷면 */}
+          {isQuize ? (
+            <div
+              style={{
+                width: window.innerWidth <= 500 ? "85%" : "400px",
+                height: document.getElementById("modal").clientHeight,
+                backgroundColor: "white",
+                borderRadius: "30px",
+                boxShadow: "0px 0px 30px rgba(70, 70, 70, 0.6)",
+                position: "absolute",
+                top: "17%",
+                left: "50%",
+                transform: "translate(-50%, 0)",
+                zIndex: 10,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-around",
+                overflowX: "hidden",
+              }}
+            >
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  setQuize(false);
+                }}
+                style={{ border: "none", backgroundColor: "#00ff0000", alignSelf: "flex-end", padding: "5% 5% 0 0" }}
+              >
+                <img src={close} />
+              </button>
+              <Typography type="title" margin="0 0 3% 0">
+                {string.storeInfo[storeNum].title}
+              </Typography>
+              <Typography margin="0 0 3% 0">{quizeInfo[storeNum].quize}</Typography>
+              <div style={{ width: "100%" }}>
+                {quizeInfo[storeNum].ex.map((data, idx) => {
+                  return (
+                    <div key={idx}>
+                      <RoundButton
+                        color={isCorrect[idx]}
+                        width="65%"
+                        margin="4% 0 4% 0"
+                        onClick={() => {
+                          setButtonColor(data, idx);
+                          if (data != quizeInfo[storeNum].answer) {
+                            setTimeout(() => {
+                              setCorrect([...isCorrect.slice(0, idx), "#C6C6C6", ...isCorrect.slice(idx + 1)]);
+                            }, [2000]);
+                          }
+                        }}
+                      >
+                        {data}
+                      </RoundButton>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
         </div>
       ) : null}
     </>
