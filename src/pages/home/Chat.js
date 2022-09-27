@@ -33,7 +33,7 @@ const Chat = (props) => {
         cursor
         // fixedWidth
         style={{
-          width: window.innerWidth > 500 ? "65%" : "55%",
+          width: window.innerWidth > 500 ? "65%" : "60%",
           textAlign: "left",
           marginLeft: "17%",
           fontSize: "16px",
