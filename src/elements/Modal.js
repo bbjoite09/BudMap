@@ -31,13 +31,12 @@ const MyModal = (props) => {
           <div
             style={{
               width: window.innerWidth <= 500 ? "85%" : "400px",
-              minHeight: 350,
-              height: "65vh",
+              minHeight: "60vh",
               backgroundColor: "white",
               borderRadius: "30px",
               boxShadow: "0px 0px 30px rgba(70, 70, 70, 0.6)",
               position: "absolute",
-              top: "50%",
+              top: window.innerWidth <= 500 && window.innerHeight <= 850 ? "50%" : "55%",
               left: "50%",
               transform: "translate(-50%, -50%)",
               zIndex: 10,
@@ -56,23 +55,25 @@ const MyModal = (props) => {
             >
               <img src={close} />
             </button>
-            <Typography type="title">{title}</Typography>
+            <Typography type="title" margin="0 0 3% 0">
+              {title}
+            </Typography>
             <Typography>{describe}</Typography>
             <>
-              <MySlider {...settings} style={{ zIndex: "0", width: "110%" }}>
+              <MySlider {...settings} style={{ zIndex: "0", width: "110%", marginTop: "3%" }}>
                 <>
-                  <div style={{ paddingLeft: "5%" }}>
+                  <div style={{ paddingLeft: "2%" }}>
                     <img src={src1} style={{ width: "100%", borderRadius: "30px" }} />
                   </div>
                 </>
                 <>
-                  <div style={{ paddingLeft: "5%" }}>
+                  <div style={{ paddingLeft: "2%" }}>
                     <img src={src2} style={{ width: "100%", borderRadius: "30px" }} />
                   </div>
                 </>
               </MySlider>
             </>
-            <RoundButton color="#C6C6C6" width="80%" margin="0 0 5% 0">
+            <RoundButton color="#C6C6C6" width="80%" margin="4% 0 4% 0">
               퀴즈를 풀어볼까요?
             </RoundButton>
           </div>
@@ -99,7 +100,6 @@ const MySlider = styled(Slider)`
   }
   .slick-dots li button:before {
     position: absolute;
-    left: 10px;
     color: white;
     content: "•";
     margin: 0 auto;
@@ -111,7 +111,8 @@ const MySlider = styled(Slider)`
     color: #a9dabe;
   }
   .slick-dots {
-    bottom: 11px;
+    left: 7px;
+    bottom: 15px;
   }
 `;
 

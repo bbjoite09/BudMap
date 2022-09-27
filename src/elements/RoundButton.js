@@ -10,7 +10,7 @@ const RoundButton = (props) => {
       <button
         style={{
           width,
-          height: "10%",
+          height: "56px",
           backgroundColor: color,
           border: "none",
           borderRadius: "30px",

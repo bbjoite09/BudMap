@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/firstSection"
+  to = "localhost:3000/"
+  status = 200

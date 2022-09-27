@@ -3,12 +3,20 @@ import React from "react";
 const Typography = (props) => {
   // eslint-disable-next-line react/prop-types
   const { children, type, margin } = props;
-  const title = { fontWeight: "700", fontSize: "36px", lineHeight: "42px", whiteSpace: "pre-wrap", margin: margin };
+  const title = {
+    fontWeight: "700",
+    fontSize: "34px",
+    lineHeight: "42px",
+    whiteSpace: "pre-wrap",
+    margin: margin,
+    wordSpacing: "-2px",
+  };
   const basicStyle = {
     fontWeight: "700",
-    fontSize: "15.5px",
+    fontSize: "15px",
     lineHeight: "24px",
     whiteSpace: "pre-wrap",
+    wordSpacing: "-2px",
     margin: margin,
   };
   const button = {

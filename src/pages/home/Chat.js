@@ -10,7 +10,7 @@ const Chat = (props) => {
       style={{
         width: "85%",
         height: 67,
-        backgroundColor: "#E8F5FE",
+        backgroundColor: "white",
         borderRadius: "35px",
         display: "flex",
         justifyContent: "center",
