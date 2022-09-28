@@ -15,6 +15,7 @@ import store4_2 from "../../static/images/store/store_4_2.jpg";
 import store5_2 from "../../static/images/store/store_5_2.jpg";
 import store5_1 from "../../static/images/store/store_5_1.jpg";
 
+import BottomSlider from "../../elements/BottomSlider";
 import Modal from "../../elements/Modal";
 
 const SecondSection = () => {
@@ -67,6 +68,7 @@ const SecondSection = () => {
         style={{ position: "absolute", width: "13%", left: "38%", top: "35%" }}
       />
       <Modal isOpen={isOpen5} setOpen={setOpen5} storeNum={"store5"} src1={store5_1} src2={store5_2} />
+      <BottomSlider />
     </div>
   );
 };

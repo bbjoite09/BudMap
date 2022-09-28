@@ -88,7 +88,7 @@ const MyModal = (props) => {
               </MySlider>
             </>
             <RoundButton
-              color="#C6C6C6"
+              color="#313C9B"
               width="80%"
               margin="4% 0 4% 0"
               onClick={() => {

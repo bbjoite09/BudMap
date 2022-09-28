@@ -12,6 +12,7 @@ import store2_1 from "../../static/images/store/store_2_1.jpg";
 import store2_2 from "../../static/images/store/store_2_2.jpg";
 import { string } from "../../static/strings/string";
 import Chat from "../home/Chat";
+import BottomSlider from "../../elements/BottomSlider";
 
 const FirstSection = () => {
   const [isOpen1, setOpen1] = useState(false);
@@ -63,6 +64,7 @@ const FirstSection = () => {
         style={{ position: "absolute", width: "13%", right: "6%", top: "37%" }}
       />
       <Modal isOpen={isOpen2} setOpen={setOpen2} storeNum={"store2"} src1={store2_1} src2={store2_2} />
+      <BottomSlider />
     </div>
   );
 };
