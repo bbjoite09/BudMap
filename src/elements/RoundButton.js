@@ -3,7 +3,7 @@ import React from "react";
 import Typography from "./Typography";
 
 const RoundButton = (props) => {
-  const { children, color, width, margin } = props;
+  const { children, color, width, margin, onClick } = props;
 
   return (
     <>
@@ -16,6 +16,7 @@ const RoundButton = (props) => {
           borderRadius: "30px",
           margin,
         }}
+        onClick={onClick}
       >
         <Typography type="button">{children}</Typography>
       </button>
