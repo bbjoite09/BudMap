@@ -10,6 +10,8 @@ import ic3 from "../../static/images/store/store3.png";
 import ic4 from "../../static/images/store/store4.png";
 import ic5 from "../../static/images/store/store5.png";
 
+import BottomSlider from "../../elements/BottomSlider";
+
 const Home = () => {
   const [next, setNext] = useState(0);
   return (
@@ -25,7 +27,7 @@ const Home = () => {
     >
       <img
         src={window.innerWidth <= 500 || window.innerHeight >= 850 ? background : backgroundCom}
-        style={{ position: "absolute", width: "100%", marginTop: "30%", objectFit: "cover" }}
+        style={{ position: "absolute", width: "100%", marginTop: "25%", objectFit: "cover" }}
       />
       <Link to="/firstSection">
         <div style={{ position: "absolute", width: "45%", height: "30%", top: "25%", right: 0 }} />
@@ -47,6 +49,7 @@ const Home = () => {
       >
         {string.chatTutorial[next]}
       </Chat>
+      <BottomSlider />
     </div>
   );
 };
