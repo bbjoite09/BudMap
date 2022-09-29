@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
+import Story from "./pages/Story";
 import styled from "styled-components";
 import FirstSection from "./pages/section/FirstSection";
 import SecondSection from "./pages/section/SecondSection";
@@ -11,7 +12,8 @@ function App() {
     <BackgroundStyle className="App">
       <Container>
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          <Route path="/" exact element={<Story />} />
+          <Route path="/home" exact element={<Home />} />
           <Route path="/firstSection" exact element={<FirstSection />} />
           <Route path="/secondSection" exact element={<SecondSection />} />
         </Routes>
@@ -22,6 +24,7 @@ function App() {
 
 const BackgroundStyle = styled.div`
   background-color: #dcdcdc;
+  position: relative;
 `;
 
 const Container = styled.div`

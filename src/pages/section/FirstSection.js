@@ -36,10 +36,7 @@ const FirstSection = () => {
         position: "relative",
       }}
     >
-      <img
-        src={sectionBackground}
-        style={{ position: "absolute", width: "100%", height: "100%", top: "0", objectFit: "cover" }}
-      />
+      <img src={sectionBackground} style={{ position: "absolute", width: "100%", top: "5%" }} />
       <Chat>{setChat()}</Chat>
       <Link to="/">
         <img src={homeButton} style={{ position: "absolute", width: "10%", left: 88, bottom: 65 }} />
@@ -53,7 +50,12 @@ const FirstSection = () => {
         onClick={() => {
           setOpen1(!isOpen1);
         }}
-        style={{ position: "absolute", width: "15%", left: window.innerWidth <= 500 ? "8%" : "10%", top: "45%" }}
+        style={{
+          position: "absolute",
+          width: "15%",
+          left: 60,
+          top: window.innerWidth / window.innerHeight >= 0.5 ? "50%" : "45%",
+        }}
       />
       <Modal isOpen={isOpen1} setOpen={setOpen1} storeNum={"store1"} src1={store1_1} src2={store1_2} />
       <img
@@ -61,7 +63,7 @@ const FirstSection = () => {
         onClick={() => {
           setOpen2(!isOpen2);
         }}
-        style={{ position: "absolute", width: "13%", right: "6%", top: "37%" }}
+        style={{ position: "absolute", width: "13%", right: "10%", top: "41%" }}
       />
       <Modal isOpen={isOpen2} setOpen={setOpen2} storeNum={"store2"} src1={store2_1} src2={store2_2} />
       <BottomSlider />

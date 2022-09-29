@@ -26,10 +26,11 @@ const Chat = (props) => {
         style={{ position: "absolute", left: 10, top: -5, width: window.innerWidth > 500 ? "16%" : "20%" }}
       />
       <Typing
+        speed={70}
         onDone={onDone}
         Tag="div"
-        preDelay={1500}
-        postDelay={1500}
+        preDelay={750}
+        postDelay={750}
         cursor
         // fixedWidth
         style={{
