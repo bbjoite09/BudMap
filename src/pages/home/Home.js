@@ -74,7 +74,7 @@ const moveRignt = keyframes`{
 
 const AnimationTop = styled.img`
   position: absolute;
-  animation: ${moveRignt} 16s linear infinite;
+  animation: ${moveRignt} 18s linear infinite;
   z-index: 5;
   width: 400%;
   top: 15%;
