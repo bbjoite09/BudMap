@@ -36,9 +36,9 @@ const FirstSection = () => {
         position: "relative",
       }}
     >
-      <img src={sectionBackground} style={{ position: "absolute", width: "100%", top: "5%" }} />
+      <img src={sectionBackground} style={{ position: "absolute", width: "100%", objectFit: "cover", top: "5%" }} />
       <Chat>{setChat()}</Chat>
-      <Link to="/">
+      <Link to="/home">
         <img src={homeButton} style={{ position: "absolute", width: "10%", left: 88, bottom: 65 }} />
       </Link>
       <Link to="/secondSection">
@@ -54,7 +54,7 @@ const FirstSection = () => {
           position: "absolute",
           width: "15%",
           left: 60,
-          top: window.innerWidth / window.innerHeight >= 0.5 ? "50%" : "45%",
+          top: window.innerWidth / window.innerHeight >= 0.56 ? "50%" : "45%",
         }}
       />
       <Modal isOpen={isOpen1} setOpen={setOpen1} storeNum={"store1"} src1={store1_1} src2={store1_2} />

@@ -4,16 +4,20 @@ import styled, { keyframes } from "styled-components";
 
 const SpeechBubble = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { children, position, left, right, bottom, top } = props;
+  const { children, position, left, right, bottom, top, width, height } = props;
   return (
     <Animation
       id="bubble"
       style={{
+        whiteSpace: "pre-wrap",
+        padding: "0 3%",
         position,
         left,
         right,
         bottom,
         top,
+        width,
+        height,
       }}
     >
       <Typography type="speech">{children}</Typography>

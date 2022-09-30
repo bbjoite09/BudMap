@@ -17,18 +17,19 @@ export const AnimationLR = styled.img`
   animation: ${moveLR} 2s linear infinite;
   z-index: 5;
   position: absolute;
-  width: 110%;
-  top: 15%;
+  width: 80%;
+  left: 13%;
+  top: 23%;
 `;
 
 const moveBig = keyframes`{
   from {
-    width: 170%;
-    left: -35%;
+    width: 100%;
+    left: 0%;
   }
   to{
-    width: 200%;
-    left: -50%;
+    width: 110%;
+    left: -5%;
   }
 }`;
 
@@ -36,9 +37,9 @@ export const AnimationBig = styled.img`
   position: absolute;
   animation: ${moveBig} 2s linear infinite;
   position: absolute;
-  width: 200%;
-  left: -50%;
-  bottom: 0;
+  width: 100%;
+  left: 0%;
+  top: 30%;
 `;
 
 const opacity = keyframes`{
@@ -55,21 +56,21 @@ export const AnimationShine = styled.img`
   animation: ${opacity} 2s linear;
   z-index: 5;
   position: absolute;
-  width: 120%;
-  left: -5%;
+  width: 80%;
+  left: 13%;
   opacity: 0.2;
-  top: 15%;
+  top: 23%;
 `;
 
 const moveTB = keyframes`{
   0% {
-    top: 25%;
-  }
-  50% {
     top: 30%;
   }
+  50% {
+    top: 33%;
+  }
   100%{
-    top: 25%;
+    top: 30%;
   }
 }`;
 
@@ -81,18 +82,18 @@ export const AnimationTB = styled.img`
   position: absolute;
   width: 120%;
   left: -7%;
-  top: 25%;
+  top: 30%;
 `;
 
 const moveForLogin = keyframes`{
   0% {
-    top: 65%;
+    top: 20%;
   }
   50% {
-    top: 70%;
+    top: 22%;
   }
   100%{
-    top: 65%;
+    top: 20%;
   }
 }`;
 
@@ -101,7 +102,7 @@ export const AnimationForLogin = styled.img`
   animation: ${moveForLogin} 2s linear infinite;
   z-index: 15;
   position: absolute;
-  width: 70%;
+  width: 55%;
   top: 80%;
-  left: 15%;
+  left: 22.5%;
 `;

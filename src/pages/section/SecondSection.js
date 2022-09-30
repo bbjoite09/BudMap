@@ -36,7 +36,7 @@ const SecondSection = () => {
     >
       <img src={sectionBackground} style={{ position: "absolute", width: "100%", height: "90%", top: 0 }} />
       <Chat>{string.clickIcon[0]}</Chat>
-      <Link to="/">
+      <Link to="/home">
         <img src={homeButton} style={{ position: "absolute", width: "10%", right: 88, top: "15%" }} />
       </Link>
       <Link to="/firstSection">

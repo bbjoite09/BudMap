@@ -5,8 +5,8 @@ const Typography = (props) => {
   const { children, onClick, type, margin, color, position, right, left, top, bottom, fontSize, zIndex } = props;
   const title = {
     fontWeight: "700",
-    fontSize: "34px",
-    lineHeight: "42px",
+    fontSize: "33px",
+    lineHeight: "39px",
     whiteSpace: "pre-wrap",
     margin: margin,
     wordSpacing: "-2px",
@@ -14,7 +14,7 @@ const Typography = (props) => {
   const basicStyle = {
     fontWeight: "700",
     fontSize: "15px",
-    lineHeight: "24px",
+    lineHeight: "22px",
     whiteSpace: "pre-wrap",
     wordSpacing: "-2px",
     margin: margin,
