@@ -23,7 +23,12 @@ const Chat = (props) => {
     >
       <img
         src={char}
-        style={{ position: "absolute", left: 10, top: -5, width: window.innerWidth > 500 ? "16%" : "20%" }}
+        style={{
+          position: "absolute",
+          left: 10,
+          top: -5,
+          width: window.innerWidth / window.innerHeight >= 0.56 ? "15%" : "20%",
+        }}
       />
       <Typing
         speed={70}
@@ -31,12 +36,11 @@ const Chat = (props) => {
         Tag="div"
         preDelay={750}
         postDelay={750}
-        cursor
-        // fixedWidth
+        fixedWidth
         style={{
-          width: window.innerWidth > 500 ? "65%" : "60%",
+          width: window.innerWidth / window.innerHeight >= 0.56 ? "75%" : "60%",
           textAlign: "left",
-          marginLeft: "17%",
+          marginLeft: "15%",
           fontSize: "16px",
           lineHeight: "24px",
           fontWeight: "700",

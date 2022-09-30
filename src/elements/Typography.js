@@ -34,7 +34,7 @@ const Typography = (props) => {
   };
   const speech = {
     fontWeight: "900",
-    fontSize: fontSize ? fontSize : "20px",
+    fontSize: fontSize ? fontSize : "23px",
     lineHeight: "34px",
     wordBreak: "keep-all",
     color,
