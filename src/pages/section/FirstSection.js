@@ -36,7 +36,7 @@ const FirstSection = () => {
         position: "relative",
       }}
     >
-      <img src={sectionBackground} style={{ position: "absolute", width: "100%", top: "5%" }} />
+      <img src={sectionBackground} style={{ position: "absolute", width: "100%", objectFit: "cover", top: "5%" }} />
       <Chat>{setChat()}</Chat>
       <Link to="/home">
         <img src={homeButton} style={{ position: "absolute", width: "10%", left: 88, bottom: 65 }} />

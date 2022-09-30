@@ -69,10 +69,10 @@ const MyModal = (props) => {
             >
               <img src={close} />
             </button>
-            <Typography type="title" margin="0 0 3% 0">
+            <Typography type="title" margin="0">
               {string.storeInfo[storeNum].title}
             </Typography>
-            <Typography>{string.storeInfo[storeNum].describe}</Typography>
+            <Typography margin="3% 0 1% 0">{string.storeInfo[storeNum].describe}</Typography>
             <>
               <MySlider {...settings} style={{ zIndex: "0", width: "110%", marginTop: "3%" }}>
                 <>
@@ -90,7 +90,7 @@ const MyModal = (props) => {
             <RoundButton
               color="#313C9B"
               width="80%"
-              margin="4% 0 4% 0"
+              margin="5% 0 6% 0"
               onClick={() => {
                 setQuize(true);
               }}
