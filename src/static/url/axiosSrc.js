@@ -1,8 +1,8 @@
-const baseUrl = `http://localhost:3001`;
+const baseUrl = `https://guro-budmap.herokuapp.com`;
 
 export const url = {
   userUrl: baseUrl + "/auth",
-  stampUrl: baseUrl + "/stamp",
+  stampUrl: baseUrl + "/stamp-user",
 };
 
 export const axiosUrl = {
