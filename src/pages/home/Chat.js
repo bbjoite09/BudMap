@@ -27,7 +27,7 @@ const Chat = (props) => {
           position: "absolute",
           left: 10,
           top: -5,
-          width: window.innerWidth / window.innerHeight >= 0.56 ? "15%" : "20%",
+          width: window.innerWidth / window.innerHeight >= 0.5 ? "15%" : "20%",
         }}
       />
       <Typing
@@ -38,7 +38,7 @@ const Chat = (props) => {
         postDelay={750}
         fixedWidth
         style={{
-          width: window.innerWidth / window.innerHeight >= 0.56 ? "75%" : "60%",
+          width: window.innerWidth / window.innerHeight >= 0.5 ? "75%" : "60%",
           textAlign: "left",
           marginLeft: "15%",
           fontSize: "16px",

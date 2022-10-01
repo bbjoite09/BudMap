@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import Typing from "react-kr-typing-anim";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AnimationBig, AnimationForLogin, AnimationLR, AnimationShine, AnimationTB } from "../elements/Animation";
 import SpeechBubble from "../elements/SpeechBubble";
 import Typography from "../elements/Typography";
 import kakaoLoginButton from "../static/images/story/kakaoLoginButton.png";
 import loginDescribe from "../static/images/story/loginDescribe.png";
+import logo from "../static/images/story/logo.png";
 import background1 from "../static/images/story/storyBackground1.png";
 import background2 from "../static/images/story/storyBackground2.png";
 import background3 from "../static/images/story/storyBackground3.png";
-import logo from "../static/images/story/logo.png";
 import story from "../static/strings/story";
+import { axiosUrl } from "../static/url/axiosSrc";
 
 const Story = () => {
   const [storyState, setStoryState] = useState(0);
-
   const getStory = (num, time) => {
     return (
       <div
@@ -25,7 +24,7 @@ const Story = () => {
           width: "80vw",
           alignItems: "flex-start",
           marginTop: "10%",
-          marginLeft: "7%",
+          marginLeft: "10%",
         }}
       >
         <Typing
@@ -167,12 +166,12 @@ const Story = () => {
             style={{
               position: "absolute",
               width: "100%",
-              bottom: window.innerWidth / window.innerHeight >= 0.56 ? "-25%" : "-10%",
+              bottom: window.innerWidth / window.innerHeight >= 0.5 ? "-25%" : "-10%",
             }}
           />
           <img src={logo} style={{ position: "absolute", width: "70%", top: "10%", left: "15%" }} />
           <AnimationForLogin src={loginDescribe} />
-          <Link to="/home">
+          <a href={axiosUrl.createUser}>
             <img
               src={kakaoLoginButton}
               style={{
@@ -183,7 +182,7 @@ const Story = () => {
                 left: "15%",
               }}
             />
-          </Link>
+          </a>
         </Container>
       )}
     </div>

@@ -42,8 +42,6 @@ const BottomSlider = () => {
           <img
             src={stampBar}
             onClick={() => {
-              const el = document.getElementsByClassName("slide-pane_from_bottom");
-              console.log(el);
               setState({ isPaneOpen: false });
             }}
             style={{ position: "absolute", width: "8%", top: "3%", left: "46%" }}
