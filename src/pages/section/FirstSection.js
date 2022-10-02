@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "../../elements/Modal";
 import arrow from "../../static/images/section/arrow1.png";
 import homeButton from "../../static/images/section/homeButton.png";
 import ic1 from "../../static/images/store/store1.png";
 import ic2 from "../../static/images/store/store2.png";
+import stamp1 from "../../static/images/stamp/store1_done.png";
+import stamp2 from "../../static/images/stamp/store2_done.png";
 import sectionBackground from "../../static/images/section/section1.png";
 import store1_1 from "../../static/images/store/store_1_1.jpg";
 import store1_2 from "../../static/images/store/store_1_2.jpg";
@@ -14,11 +17,16 @@ import { string } from "../../static/strings/string";
 import Chat from "../home/Chat";
 import BottomSlider from "../../elements/BottomSlider";
 import { getCookie } from "../../services/cookie";
+import { getStampList } from "../../api/stamp.api";
 
 const FirstSection = () => {
   const [isOpen1, setOpen1] = useState(false);
   const [isOpen2, setOpen2] = useState(false);
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
+
+  useEffect(() => {
+    getStampList();
+  }, []);
 
   const setChat = () => {
     if (isOpen1 || isOpen2) {
@@ -38,35 +46,51 @@ const FirstSection = () => {
         position: "relative",
       }}
     >
-      <img src={sectionBackground} style={{ position: "absolute", width: "100%", objectFit: "cover", top: "5%" }} />
+      <img src={sectionBackground} style={{ position: "absolute", width: "100%", objectFit: "cover", top: "0%" }} />
       <Chat>{setChat()}</Chat>
       <Link to={homeSrc}>
-        <img src={homeButton} style={{ position: "absolute", width: "10%", left: 88, bottom: "9vh" }} />
+        <img src={homeButton} style={{ position: "absolute", width: "10%", left: 80, bottom: "9vh" }} />
       </Link>
       <Link to="/secondSection">
         <img src={arrow} style={{ position: "absolute", width: "10%", left: 30, bottom: "9vh" }} />
       </Link>
 
-      <img
-        src={ic1}
-        onClick={() => {
-          setOpen1(!isOpen1);
-        }}
-        style={{
-          position: "absolute",
-          width: "15%",
-          left: 60,
-          top: window.innerWidth / window.innerHeight >= 0.5 ? "50%" : "45%",
-        }}
-      />
+      {localStorage.getItem("rice") ? (
+        <img
+          src={stamp1}
+          style={{
+            position: "absolute",
+            width: "18%",
+            left: 60,
+            top: window.innerWidth / window.innerHeight >= 0.5 ? "50%" : "s%",
+          }}
+        />
+      ) : (
+        <img
+          src={ic1}
+          onClick={() => {
+            setOpen1(!isOpen1);
+          }}
+          style={{
+            position: "absolute",
+            width: "16%",
+            left: 60,
+            top: window.innerWidth / window.innerHeight >= 0.5 ? "50%" : "45%",
+          }}
+        />
+      )}
       <Modal isOpen={isOpen1} setOpen={setOpen1} storeNum={"store1"} src1={store1_1} src2={store1_2} logo={ic1} />
-      <img
-        src={ic2}
-        onClick={() => {
-          setOpen2(!isOpen2);
-        }}
-        style={{ position: "absolute", width: "13%", right: "10%", top: "41%" }}
-      />
+      {localStorage.getItem("fish") ? (
+        <img src={stamp2} style={{ position: "absolute", width: "30%", right: "10%", top: "41%" }} />
+      ) : (
+        <img
+          src={ic2}
+          onClick={() => {
+            setOpen2(!isOpen2);
+          }}
+          style={{ position: "absolute", width: "15%", right: "10%", top: "41%" }}
+        />
+      )}
       <Modal isOpen={isOpen2} setOpen={setOpen2} storeNum={"store2"} src1={store2_1} src2={store2_2} logo={ic2} />
       <BottomSlider />
     </div>
