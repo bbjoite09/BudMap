@@ -90,10 +90,10 @@ const BottomSlider = () => {
                 marginBottom: "-2%",
               }}
             >
-              <img src={store3_none} />
-              <img src={store4_none} />
+              {localStorage.getItem("china") ? <img src={store3_done} /> : <img src={store3_none} />}
+              {localStorage.getItem("meat") ? <img src={store4_done} /> : <img src={store4_none} />}
             </div>
-            <img src={store2_none} />
+            {localStorage.getItem("fish") ? <img src={store2_done} /> : <img src={store2_none} />}
             <div
               style={{
                 width: "100%",
@@ -103,8 +103,8 @@ const BottomSlider = () => {
                 marginTop: "-3%",
               }}
             >
-              <img src={store1_none} />
-              <img src={store5_none} />
+              {localStorage.getItem("rice") ? <img src={store1_done} /> : <img src={store1_none} />}
+              {localStorage.getItem("hanra") ? <img src={store5_done} /> : <img src={store5_none} />}
             </div>
           </div>
         </div>

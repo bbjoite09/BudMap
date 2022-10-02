@@ -13,10 +13,12 @@ import store2_2 from "../../static/images/store/store_2_2.jpg";
 import { string } from "../../static/strings/string";
 import Chat from "../home/Chat";
 import BottomSlider from "../../elements/BottomSlider";
+import { getCookie } from "../../services/cookie";
 
 const FirstSection = () => {
   const [isOpen1, setOpen1] = useState(false);
   const [isOpen2, setOpen2] = useState(false);
+  const homeSrc = `/home?token=${getCookie("accesstoken")}`;
 
   const setChat = () => {
     if (isOpen1 || isOpen2) {
@@ -38,7 +40,7 @@ const FirstSection = () => {
     >
       <img src={sectionBackground} style={{ position: "absolute", width: "100%", objectFit: "cover", top: "5%" }} />
       <Chat>{setChat()}</Chat>
-      <Link to="/home">
+      <Link to={homeSrc}>
         <img src={homeButton} style={{ position: "absolute", width: "10%", left: 88, bottom: "9vh" }} />
       </Link>
       <Link to="/secondSection">
@@ -57,7 +59,7 @@ const FirstSection = () => {
           top: window.innerWidth / window.innerHeight >= 0.5 ? "50%" : "45%",
         }}
       />
-      <Modal isOpen={isOpen1} setOpen={setOpen1} storeNum={"store1"} src1={store1_1} src2={store1_2} />
+      <Modal isOpen={isOpen1} setOpen={setOpen1} storeNum={"store1"} src1={store1_1} src2={store1_2} logo={ic1} />
       <img
         src={ic2}
         onClick={() => {
@@ -65,7 +67,7 @@ const FirstSection = () => {
         }}
         style={{ position: "absolute", width: "13%", right: "10%", top: "41%" }}
       />
-      <Modal isOpen={isOpen2} setOpen={setOpen2} storeNum={"store2"} src1={store2_1} src2={store2_2} />
+      <Modal isOpen={isOpen2} setOpen={setOpen2} storeNum={"store2"} src1={store2_1} src2={store2_2} logo={ic2} />
       <BottomSlider />
     </div>
   );

@@ -1,21 +1,33 @@
-import React, { useState } from "react";
-import Chat from "./Chat";
-import { string } from "../../static/strings/string";
-import background from "../../static/images/home/background.png";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import background from "../../static/images/home/background.png";
+import cloudBottom from "../../static/images/home/cloudBottom.png";
+import cloudTop from "../../static/images/home/cloudTop.png";
 import ic1 from "../../static/images/store/store1.png";
 import ic2 from "../../static/images/store/store2.png";
 import ic3 from "../../static/images/store/store3.png";
 import ic4 from "../../static/images/store/store4.png";
 import ic5 from "../../static/images/store/store5.png";
-import cloudTop from "../../static/images/home/cloudTop.png";
-import cloudBottom from "../../static/images/home/cloudBottom.png";
+import { string } from "../../static/strings/string";
+import Chat from "./Chat";
 
-import BottomSlider from "../../elements/BottomSlider";
 import styled, { keyframes } from "styled-components";
+import { saveCookie } from "../../api/kakao.api";
+import { getStampList } from "../../api/stamp.api";
+import BottomSlider from "../../elements/BottomSlider";
+import { getCookie } from "../../services/cookie";
 
 const Home = () => {
   const [next, setNext] = useState(0);
+
+  useEffect(() => {
+    /** Kakao 로그인 후 리다이렉트 페이지에서, 받아온 JWT를 쿠키에 저장 함수 */
+    saveCookie();
+    /** 유저가 찍은 도장 리스트를 받아와서 로컬 스토리지에 저장 */
+    if (getCookie("accesstoken")) {
+      getStampList().then(() => console.log("stamp update done"));
+    }
+  }, []);
   return (
     <div
       style={{

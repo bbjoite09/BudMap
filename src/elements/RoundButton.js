@@ -9,6 +9,9 @@ const RoundButton = (props) => {
     <>
       <button
         style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           width,
           height: "56px",
           backgroundColor: color,

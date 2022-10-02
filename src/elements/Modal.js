@@ -3,21 +3,49 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import styled from "styled-components";
+import { updateStamp } from "../api/stamp.api";
 import close from "../static/images/modal/close.png";
 import quizeInfo from "../static/strings/quizeInfo";
 import { string } from "../static/strings/string";
 import RoundButton from "./RoundButton";
 import Typography from "./Typography";
 
+const storeNumConverter = (num) => {
+  switch (num) {
+    case "1":
+      return 5;
+    case "2":
+      return 2;
+    case "3":
+      return 1;
+    case "4":
+      return 4;
+    case "5":
+      return 3;
+  }
+};
+
+const saveStamp = async (num) => {
+  /**
+   * 1 : 중국성, 2 : 장어, 3 : 한라산 도새기, 4 : 고기가 맛있는 집, 5 : 떡볶이
+   * 저장하고 싶은 것 넣기, 중복 저장 안 됨
+   */
+  await updateStamp(num);
+};
+
 const MyModal = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { isOpen, setOpen, storeNum, src1, src2 } = props;
+  const { isOpen, setOpen, storeNum, src1, src2, logo } = props;
   const [isQuize, setQuize] = useState(false);
   const [isCorrect, setCorrect] = useState(["#C6C6C6", "#C6C6C6", "#C6C6C6"]);
 
   const setButtonColor = (ans, idx) => {
     if (ans == quizeInfo[storeNum].answer) {
       setCorrect([...isCorrect.slice(0, idx), "#A9DABE", ...isCorrect.slice(idx + 1)]);
+      const serverStoreNum = storeNumConverter(storeNum[5]);
+      saveStamp(serverStoreNum).then(() => {
+        console.log("Your stamp has been successfully saved!");
+      });
     } else if (ans != quizeInfo[storeNum].answer) {
       setCorrect([...isCorrect.slice(0, idx), "#EF6262", ...isCorrect.slice(idx + 1)]);
     }
@@ -37,7 +65,10 @@ const MyModal = (props) => {
               background: "rgba(40, 40, 40, 0.5)",
               zIndex: 5,
             }}
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              setQuize(false);
+              setOpen(false);
+            }}
           />
 
           {/* 가게설명 - 앞면 */}
@@ -116,7 +147,7 @@ const MyModal = (props) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "space-around",
+                justifyContent: "space-evenly",
                 overflowX: "hidden",
               }}
             >
@@ -125,10 +156,11 @@ const MyModal = (props) => {
                   setOpen(false);
                   setQuize(false);
                 }}
-                style={{ border: "none", backgroundColor: "#00ff0000", alignSelf: "flex-end", padding: "5% 5% 0 0" }}
+                style={{ border: "none", backgroundColor: "#00ff0000", alignSelf: "flex-end", padding: "0 5% 0 0" }}
               >
                 <img src={close} />
               </button>
+              <img src={logo} style={{ width: "15%", marginTop: "-5%", marginBottom: "-1%" }} />
               <Typography type="title" margin="0 0 3% 0">
                 {string.storeInfo[storeNum].title}
               </Typography>
@@ -136,11 +168,11 @@ const MyModal = (props) => {
               <div style={{ width: "100%" }}>
                 {quizeInfo[storeNum].ex.map((data, idx) => {
                   return (
-                    <div key={idx}>
+                    <div key={idx} style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
                       <RoundButton
                         color={isCorrect[idx]}
                         width="65%"
-                        margin="4% 0 4% 0"
+                        margin="3% 0 3% 0"
                         onClick={() => {
                           setButtonColor(data, idx);
                           if (data != quizeInfo[storeNum].answer) {

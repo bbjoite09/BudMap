@@ -17,11 +17,13 @@ import store5_1 from "../../static/images/store/store_5_1.jpg";
 
 import BottomSlider from "../../elements/BottomSlider";
 import Modal from "../../elements/Modal";
+import { getCookie } from "../../services/cookie";
 
 const SecondSection = () => {
   const [isOpen3, setOpen3] = useState(false);
   const [isOpen4, setOpen4] = useState(false);
   const [isOpen5, setOpen5] = useState(false);
+  const homeSrc = `/home?token=${getCookie("accesstoken")}`;
 
   return (
     <div
@@ -36,7 +38,7 @@ const SecondSection = () => {
     >
       <img src={sectionBackground} style={{ position: "absolute", width: "100%", height: "90%", top: 0 }} />
       <Chat>{string.clickIcon[0]}</Chat>
-      <Link to="/home">
+      <Link to={homeSrc}>
         <img src={homeButton} style={{ position: "absolute", width: "10%", right: 88, top: "15%" }} />
       </Link>
       <Link to="/firstSection">
@@ -50,7 +52,7 @@ const SecondSection = () => {
         }}
         style={{ position: "absolute", width: "13%", left: "28%", top: "45%" }}
       />
-      <Modal isOpen={isOpen3} setOpen={setOpen3} storeNum={"store3"} src1={store3_1} src2={store3_2} />
+      <Modal isOpen={isOpen3} setOpen={setOpen3} storeNum={"store3"} src1={store3_1} src2={store3_2} logo={ic3} />
 
       <img
         src={ic4}
@@ -59,7 +61,7 @@ const SecondSection = () => {
         }}
         style={{ position: "absolute", width: "13%", left: "45%", top: "46%" }}
       />
-      <Modal isOpen={isOpen4} setOpen={setOpen4} storeNum={"store4"} src1={store4_1} src2={store4_2} />
+      <Modal isOpen={isOpen4} setOpen={setOpen4} storeNum={"store4"} src1={store4_1} src2={store4_2} logo={ic4} />
       <img
         src={ic5}
         onClick={() => {
@@ -67,7 +69,7 @@ const SecondSection = () => {
         }}
         style={{ position: "absolute", width: "13%", left: "38%", top: "35%" }}
       />
-      <Modal isOpen={isOpen5} setOpen={setOpen5} storeNum={"store5"} src1={store5_1} src2={store5_2} />
+      <Modal isOpen={isOpen5} setOpen={setOpen5} storeNum={"store5"} src1={store5_1} src2={store5_2} logo={ic5} />
       <BottomSlider />
     </div>
   );

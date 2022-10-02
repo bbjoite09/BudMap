@@ -45,5 +45,7 @@ const changeKeyName = (item) => {
  * @param {string} idx
  */
 export const updateStamp = async (idx) => {
-  const { data } = await stamp.post(`/${idx}`);
+  const src = `https://guro-budmap.herokuapp.com/stamp-user/${idx}`;
+  const { data } = await stamp.post(src);
+  return data;
 };

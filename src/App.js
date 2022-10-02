@@ -1,12 +1,11 @@
-import "./App.css";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/home/Home";
-import Story from "./pages/Story";
 import styled from "styled-components";
+import "./App.css";
+import Home from "./pages/home/Home";
 import FirstSection from "./pages/section/FirstSection";
 import SecondSection from "./pages/section/SecondSection";
-import Test from "./pages/Test";
+import Story from "./pages/Story";
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
           <Route path="/home" exact element={<Home />} />
           <Route path="/firstSection" exact element={<FirstSection />} />
           <Route path="/secondSection" exact element={<SecondSection />} />
-          <Route path="/test" exact element={<Test />} />
         </Routes>
       </Container>
     </BackgroundStyle>

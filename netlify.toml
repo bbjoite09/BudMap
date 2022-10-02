@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/firstSection"
-  to = "localhost:3000/"
+  to = "https://www.budmap.co.kr/"
   status = 200
