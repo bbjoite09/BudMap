@@ -74,13 +74,7 @@ const SecondSection = () => {
       </Link>
 
       {localStorage.getItem("china") ? (
-        <img
-          src={stamp3}
-          onClick={() => {
-            setOpen3(!isOpen3);
-          }}
-          style={{ position: "absolute", width: "18%", left: "4%", top: "55%" }}
-        />
+        <img src={stamp3} style={{ position: "absolute", width: "18%", left: "4%", top: "55%" }} />
       ) : (
         <img
           src={ic3}
@@ -140,7 +134,7 @@ const SecondSection = () => {
         logo={ic5}
         setAnswer={setAnswer}
       />
-      <BottomSlider />
+      <BottomSlider stampCount={stampCount} />
     </div>
   );
 };
