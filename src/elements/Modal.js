@@ -42,11 +42,11 @@ const MyModal = (props) => {
 
   const setButtonColor = async (ans, idx) => {
     if (ans == quizeInfo[storeNum].answer) {
-      setAnswer("yes");
-      setCorrect([...isCorrect.slice(0, idx), "#A9DABE", ...isCorrect.slice(idx + 1)]);
       const serverStoreNum = storeNumConverter(storeNum[5]);
       await saveStamp(serverStoreNum);
       await getStampList();
+      setAnswer("yes");
+      setCorrect([...isCorrect.slice(0, idx), "#A9DABE", ...isCorrect.slice(idx + 1)]);
       setTimeout(() => {
         setOpen(false);
         setQuize(false);

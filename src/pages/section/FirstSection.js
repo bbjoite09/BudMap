@@ -116,7 +116,7 @@ const FirstSection = () => {
         logo={ic2}
         setAnswer={setAnswer}
       />
-      <BottomSlider />
+      <BottomSlider stampCount={stampCount} />
     </div>
   );
 };

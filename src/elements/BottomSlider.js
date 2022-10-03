@@ -36,7 +36,22 @@ const BottomSlider = (props) => {
           backgroundColor: "white",
         }}
       />
-      <img src={stampBar} style={{ position: "absolute", bottom: "4%", width: "8%", left: "46%" }} />
+      <button
+        style={{
+          position: "absolute",
+          bottom: 0,
+          width: "100%",
+          height: "8vh",
+          left: 0,
+          border: "none",
+          backgroundColor: "#00ff0000",
+        }}
+        onClick={() => {
+          setState({ isPaneOpen: true });
+        }}
+      >
+        <img src={stampBar} style={{ position: "absolute", top: "30%", width: "8%", left: "46%" }} />
+      </button>
       <SlidingPane
         className="some-custom-class"
         overlayClassName="some-custom-overlay-class"
@@ -62,22 +77,38 @@ const BottomSlider = (props) => {
         >
           {props.stampCount == 5 ? (
             <Link to={"/end"}>
-              <img
-                src={stampBar}
+              <button
+                style={{
+                  width: "100%",
+                  height: "8vh",
+                  position: "absolute",
+                  top: "2%",
+                  backgroundColor: "#00ff0000",
+                  border: "none",
+                }}
                 onClick={() => {
                   setState({ isPaneOpen: false });
                 }}
-                style={{ position: "absolute", width: "8%", top: "3%", left: "46%" }}
-              />
+              >
+                <img src={stampBar} style={{ position: "absolute", width: "8%", top: "3%", left: "46%" }} />
+              </button>
             </Link>
           ) : (
-            <img
-              src={stampBar}
+            <button
+              style={{
+                width: "100%",
+                height: "8vh",
+                position: "absolute",
+                top: "2%",
+                backgroundColor: "#00ff0000",
+                border: "none",
+              }}
               onClick={() => {
                 setState({ isPaneOpen: false });
               }}
-              style={{ position: "absolute", width: "8%", top: "3%", left: "46%" }}
-            />
+            >
+              <img src={stampBar} style={{ position: "absolute", width: "8%", top: "3%", left: "46%" }} />
+            </button>
           )}
           <img
             src={background}
