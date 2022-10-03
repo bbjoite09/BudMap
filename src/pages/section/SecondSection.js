@@ -24,16 +24,31 @@ import BottomSlider from "../../elements/BottomSlider";
 import Modal from "../../elements/Modal";
 import { getCookie } from "../../services/cookie";
 import { getStampList } from "../../api/stamp.api";
+import chatBubbble from "../../static/strings/chatBubble";
 
 const SecondSection = () => {
   const [isOpen3, setOpen3] = useState(false);
   const [isOpen4, setOpen4] = useState(false);
   const [isOpen5, setOpen5] = useState(false);
+  const [isAnswer, setAnswer] = useState("null");
+  const [stampCount, setStampCount] = useState(0);
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
 
   useEffect(() => {
-    getStampList().then((res) => console.log(res));
+    getStampList().then((res) => setStampCount(res.length));
   }, [localStorage["china"], localStorage["meat"], localStorage["rice"], localStorage["hanra"], localStorage["fish"]]);
+
+  const setChat = (num) => {
+    if (isAnswer == "no") {
+      return chatBubbble.QuizeNo;
+    } else if (isAnswer == "yes") {
+      return chatBubbble.QuizeYes[0];
+    } else if (isOpen3 || isOpen4 || isOpen5) {
+      return string.storeInfo.stamp.describe;
+    } else {
+      return string.clickIcon[num];
+    }
+  };
 
   return (
     <div
@@ -50,7 +65,7 @@ const SecondSection = () => {
         src={sectionBackground}
         style={{ position: "absolute", width: "100%", objectFit: "cover", height: "90%", bottom: 0 }}
       />
-      <Chat>{string.clickIcon[0]}</Chat>
+      <Chat>{setChat(stampCount)}</Chat>
       <Link to={homeSrc}>
         <img src={homeButton} style={{ position: "absolute", width: "10%", right: 80, top: "15%" }} />
       </Link>
@@ -59,7 +74,13 @@ const SecondSection = () => {
       </Link>
 
       {localStorage.getItem("china") ? (
-        <img src={stamp3} style={{ position: "absolute", width: "18%", left: "4%", top: "55%" }} />
+        <img
+          src={stamp3}
+          onClick={() => {
+            setOpen3(!isOpen3);
+          }}
+          style={{ position: "absolute", width: "18%", left: "4%", top: "55%" }}
+        />
       ) : (
         <img
           src={ic3}
@@ -69,7 +90,15 @@ const SecondSection = () => {
           style={{ position: "absolute", width: "18%", left: "4%", top: "55%" }}
         />
       )}
-      <Modal isOpen={isOpen3} setOpen={setOpen3} storeNum={"store3"} src1={store3_1} src2={store3_2} logo={ic3} />
+      <Modal
+        isOpen={isOpen3}
+        setOpen={setOpen3}
+        storeNum={"store3"}
+        src1={store3_1}
+        src2={store3_2}
+        logo={ic3}
+        setAnswer={setAnswer}
+      />
 
       {localStorage.getItem("meat") ? (
         <img src={stamp4} style={{ position: "absolute", width: "18%", left: "24%", top: "58%" }} />
@@ -82,7 +111,15 @@ const SecondSection = () => {
           style={{ position: "absolute", width: "18%", left: "24%", top: "58%" }}
         />
       )}
-      <Modal isOpen={isOpen4} setOpen={setOpen4} storeNum={"store4"} src1={store4_1} src2={store4_2} logo={ic4} />
+      <Modal
+        isOpen={isOpen4}
+        setOpen={setOpen4}
+        storeNum={"store4"}
+        src1={store4_1}
+        src2={store4_2}
+        logo={ic4}
+        setAnswer={setAnswer}
+      />
       {localStorage.getItem("hanra") ? (
         <img src={stamp5} style={{ position: "absolute", width: "18%", left: "15%", top: "39%" }} />
       ) : (
@@ -94,7 +131,15 @@ const SecondSection = () => {
           style={{ position: "absolute", width: "18%", left: "15%", top: "39%" }}
         />
       )}
-      <Modal isOpen={isOpen5} setOpen={setOpen5} storeNum={"store5"} src1={store5_1} src2={store5_2} logo={ic5} />
+      <Modal
+        isOpen={isOpen5}
+        setOpen={setOpen5}
+        storeNum={"store5"}
+        src1={store5_1}
+        src2={store5_2}
+        logo={ic5}
+        setAnswer={setAnswer}
+      />
       <BottomSlider />
     </div>
   );

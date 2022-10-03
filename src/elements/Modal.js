@@ -35,17 +35,19 @@ const saveStamp = async (num) => {
 
 const MyModal = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { isOpen, setOpen, storeNum, src1, src2, logo } = props;
+  const { isOpen, setOpen, storeNum, src1, src2, logo, setAnswer } = props;
   const [isQuize, setQuize] = useState(false);
   const [isCorrect, setCorrect] = useState(["#C6C6C6", "#C6C6C6", "#C6C6C6"]);
 
   const setButtonColor = async (ans, idx) => {
     if (ans == quizeInfo[storeNum].answer) {
+      setAnswer("yes");
       setCorrect([...isCorrect.slice(0, idx), "#A9DABE", ...isCorrect.slice(idx + 1)]);
       const serverStoreNum = storeNumConverter(storeNum[5]);
       await saveStamp(serverStoreNum);
       await getStampList();
     } else if (ans != quizeInfo[storeNum].answer) {
+      setAnswer("no");
       setCorrect([...isCorrect.slice(0, idx), "#EF6262", ...isCorrect.slice(idx + 1)]);
     }
   };
@@ -67,6 +69,7 @@ const MyModal = (props) => {
             onClick={() => {
               setQuize(false);
               setOpen(false);
+              setAnswer("null");
             }}
           />
 
@@ -94,6 +97,7 @@ const MyModal = (props) => {
             <button
               onClick={() => {
                 setOpen(false);
+                setAnswer("null");
               }}
               style={{ border: "none", backgroundColor: "#00ff0000", alignSelf: "flex-end", padding: "5% 5% 0 0" }}
             >
@@ -154,6 +158,7 @@ const MyModal = (props) => {
                 onClick={() => {
                   setOpen(false);
                   setQuize(false);
+                  setAnswer("null");
                 }}
                 style={{ border: "none", backgroundColor: "#00ff0000", alignSelf: "flex-end", padding: "0 5% 0 0" }}
               >

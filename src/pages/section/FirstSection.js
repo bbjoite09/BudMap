@@ -16,26 +16,33 @@ import store1_1 from "../../static/images/store/store_1_1.jpg";
 import store1_2 from "../../static/images/store/store_1_2.jpg";
 import store2_1 from "../../static/images/store/store_2_1.jpg";
 import store2_2 from "../../static/images/store/store_2_2.jpg";
+import chatBubbble from "../../static/strings/chatBubble";
 import { string } from "../../static/strings/string";
 import Chat from "../home/Chat";
 
 const FirstSection = () => {
   const [isOpen1, setOpen1] = useState(false);
   const [isOpen2, setOpen2] = useState(false);
-
+  const [stampCount, setStampCount] = useState(0);
+  const [isAnswer, setAnswer] = useState("null");
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
 
   useEffect(() => {
-    getStampList();
+    getStampList().then((res) => setStampCount(res.length));
   }, [localStorage["china"], localStorage["meat"], localStorage["rice"], localStorage["hanra"], localStorage["fish"]]);
 
-  const setChat = () => {
-    if (isOpen1 || isOpen2) {
+  const setChat = (num) => {
+    if (isAnswer == "no") {
+      return chatBubbble.QuizeNo;
+    } else if (isAnswer == "yes") {
+      return chatBubbble.QuizeYes[0];
+    } else if (isOpen1 || isOpen2) {
       return string.storeInfo.stamp.describe;
     } else {
-      return string.clickIcon[0];
+      return string.clickIcon[num];
     }
   };
+
   return (
     <div
       style={{
@@ -48,7 +55,7 @@ const FirstSection = () => {
       }}
     >
       <img src={sectionBackground} style={{ position: "absolute", width: "100%", objectFit: "cover", top: "0%" }} />
-      <Chat>{setChat()}</Chat>
+      <Chat>{setChat(stampCount)}</Chat>
       <Link to={homeSrc}>
         <img src={homeButton} style={{ position: "absolute", width: "10%", left: 80, bottom: "9vh" }} />
       </Link>
@@ -80,7 +87,15 @@ const FirstSection = () => {
           }}
         />
       )}
-      <Modal isOpen={isOpen1} setOpen={setOpen1} storeNum={"store1"} src1={store1_1} src2={store1_2} logo={ic1} />
+      <Modal
+        isOpen={isOpen1}
+        setOpen={setOpen1}
+        storeNum={"store1"}
+        src1={store1_1}
+        src2={store1_2}
+        logo={ic1}
+        setAnswer={setAnswer}
+      />
       {localStorage.getItem("fish") ? (
         <img src={stamp2} style={{ position: "absolute", width: "30%", right: "10%", top: "41%" }} />
       ) : (
@@ -92,7 +107,15 @@ const FirstSection = () => {
           style={{ position: "absolute", width: "15%", right: "10%", top: "41%" }}
         />
       )}
-      <Modal isOpen={isOpen2} setOpen={setOpen2} storeNum={"store2"} src1={store2_1} src2={store2_2} logo={ic2} />
+      <Modal
+        isOpen={isOpen2}
+        setOpen={setOpen2}
+        storeNum={"store2"}
+        src1={store2_1}
+        src2={store2_2}
+        logo={ic2}
+        setAnswer={setAnswer}
+      />
       <BottomSlider />
     </div>
   );

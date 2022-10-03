@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import background from "../../static/images/home/background.png";
@@ -20,15 +21,24 @@ import styled, { keyframes } from "styled-components";
 import { saveCookie } from "../../api/kakao.api";
 import { getStampList } from "../../api/stamp.api";
 import BottomSlider from "../../elements/BottomSlider";
-import { getCookie } from "../../services/cookie";
+import { getCookie, setCookie } from "../../services/cookie";
 
 const Home = () => {
   const [next, setNext] = useState(0);
+  const [stampCount, setStampCount] = useState(0);
+
+  const setChat = (num) => {
+    if (getCookie("visit")) {
+      return string.clickIcon[num];
+    } else {
+      return string.chatTutorial[next];
+    }
+  };
 
   useEffect(() => {
     saveCookie();
     if (getCookie("accesstoken")) {
-      getStampList().then(() => console.log("stamp update done"));
+      getStampList().then((res) => setStampCount(res.length));
     }
   }, [localStorage["china"], localStorage["meat"], localStorage["rice"], localStorage["hanra"], localStorage["fish"]]);
   return (
@@ -51,10 +61,26 @@ const Home = () => {
           objectFit: "cover",
         }}
       />
+      <Chat
+        onDone={() => {
+          if (next < string.chatTutorial.length - 1) {
+            setNext(next + 1);
+          }
+        }}
+      >
+        {setChat(stampCount)}
+      </Chat>
       <AnimationTop src={cloudTop} />
       <AnimationBottom src={cloudBottom} />
-      <Link to="/firstSection">
-        <div style={{ position: "absolute", width: "45%", height: "30%", top: "25%", right: 0 }} />
+      <Link
+        to="/firstSection"
+        onClick={() => {
+          if (getCookie("visit") == undefined) {
+            setCookie("visit", true);
+          }
+        }}
+      >
+        <div style={{ position: "absolute", width: "45%", height: "40%", top: "20%", right: 0 }} />
         {localStorage.getItem("rice") ? (
           <img src={stamp1} style={{ position: "absolute", width: "16%", top: "35%", right: 100, zIndex: 1 }} />
         ) : (
@@ -66,8 +92,15 @@ const Home = () => {
           <img src={ic2} style={{ position: "absolute", width: "13%", top: "40%", right: 15, zIndex: 2 }} />
         )}
       </Link>
-      <Link to="/secondSection">
-        <div style={{ position: "absolute", width: "55%", height: "30%", top: "45%", left: 0 }} />
+      <Link
+        to="/secondSection"
+        onClick={() => {
+          if (getCookie("visit") == undefined) {
+            setCookie("visit", true);
+          }
+        }}
+      >
+        <div style={{ position: "absolute", width: "55%", height: "40%", top: "40%", left: 0 }} />
         {localStorage.getItem("china") ? (
           <img src={stamp3} style={{ position: "absolute", width: "20%", top: "57%", left: 25, zIndex: 1 }} />
         ) : (
@@ -84,15 +117,7 @@ const Home = () => {
           <img src={ic5} style={{ position: "absolute", width: "15%", top: "48%", left: 90, zIndex: 2 }} />
         )}
       </Link>
-      <Chat
-        onDone={() => {
-          if (next < string.chatTutorial.length - 1) {
-            setNext(next + 1);
-          }
-        }}
-      >
-        {string.chatTutorial[next]}
-      </Chat>
+
       <BottomSlider />
     </div>
   );
