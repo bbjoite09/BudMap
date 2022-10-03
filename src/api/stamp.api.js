@@ -18,13 +18,14 @@ export const getStampList = async () => {
   for (const item of stampList.data) {
     localStorage.setItem(changeKeyName(item), item);
   }
+  return stampList.data;
 };
 
 /** 로컬 저장을 위한 키 값 변경
  * 1 : 중국성, 2 : 장어, 3 : 한라산 도새기, 4 : 고기가 맛있는 집, 5 : 떡볶이
  * @param {number} idx
  */
-const changeKeyName = (item) => {
+export const changeKeyName = (item) => {
   switch (item) {
     case 1:
       return "china";
@@ -45,7 +46,6 @@ const changeKeyName = (item) => {
  * @param {string} idx
  */
 export const updateStamp = async (idx) => {
-  const src = `https://guro-budmap.herokuapp.com/stamp-user/${idx}`;
-  const { data } = await stamp.post(src);
+  const { data } = await stamp.post(`/${idx}`);
   return data;
 };

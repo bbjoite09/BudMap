@@ -3,14 +3,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import styled from "styled-components";
-import { updateStamp } from "../api/stamp.api";
+import { getStampList, updateStamp } from "../api/stamp.api";
 import close from "../static/images/modal/close.png";
 import quizeInfo from "../static/strings/quizeInfo";
 import { string } from "../static/strings/string";
+import CorrectEffect from "./CorrectEffect";
 import RoundButton from "./RoundButton";
 import Typography from "./Typography";
 
-const storeNumConverter = (num) => {
+export const storeNumConverter = (num) => {
   switch (num) {
     case "1":
       return 5;
@@ -35,25 +36,31 @@ const saveStamp = async (num) => {
 
 const MyModal = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { isOpen, setOpen, storeNum, src1, src2, logo } = props;
+  const { isOpen, setOpen, storeNum, src1, src2, logo, setAnswer } = props;
   const [isQuize, setQuize] = useState(false);
   const [isCorrect, setCorrect] = useState(["#C6C6C6", "#C6C6C6", "#C6C6C6"]);
 
-  const setButtonColor = (ans, idx) => {
+  const setButtonColor = async (ans, idx) => {
     if (ans == quizeInfo[storeNum].answer) {
+      setAnswer("yes");
       setCorrect([...isCorrect.slice(0, idx), "#A9DABE", ...isCorrect.slice(idx + 1)]);
       const serverStoreNum = storeNumConverter(storeNum[5]);
-      saveStamp(serverStoreNum).then(() => {
-        console.log("Your stamp has been successfully saved!");
-      });
+      await saveStamp(serverStoreNum);
+      await getStampList();
+      setTimeout(() => {
+        setOpen(false);
+        setQuize(false);
+        setAnswer("null");
+      }, [3500]);
     } else if (ans != quizeInfo[storeNum].answer) {
+      setAnswer("no");
       setCorrect([...isCorrect.slice(0, idx), "#EF6262", ...isCorrect.slice(idx + 1)]);
     }
   };
 
   return (
     <>
-      {isOpen ? (
+      {isOpen && (
         <div>
           <div
             style={{
@@ -68,6 +75,7 @@ const MyModal = (props) => {
             onClick={() => {
               setQuize(false);
               setOpen(false);
+              setAnswer("null");
             }}
           />
 
@@ -75,7 +83,7 @@ const MyModal = (props) => {
           <div
             id="modal"
             style={{
-              width: window.innerWidth <= 500 ? "85%" : "400px",
+              width: "85%",
               minHeight: "60vh",
               backgroundColor: "white",
               borderRadius: "30px",
@@ -95,6 +103,7 @@ const MyModal = (props) => {
             <button
               onClick={() => {
                 setOpen(false);
+                setAnswer("null");
               }}
               style={{ border: "none", backgroundColor: "#00ff0000", alignSelf: "flex-end", padding: "5% 5% 0 0" }}
             >
@@ -119,7 +128,7 @@ const MyModal = (props) => {
               </MySlider>
             </>
             <RoundButton
-              color="#313C9B"
+              color="#ACDDC0"
               width="80%"
               margin="5% 0 6% 0"
               onClick={() => {
@@ -129,12 +138,13 @@ const MyModal = (props) => {
               퀴즈를 풀어볼까요?
             </RoundButton>
           </div>
-
+          {/* -------------------------------------------------------------  */}
           {/* 퀴즈 - 뒷면 */}
-          {isQuize ? (
+          {isQuize && (
             <div
+              id="box"
               style={{
-                width: window.innerWidth <= 500 ? "85%" : "400px",
+                width: "85%",
                 height: document.getElementById("modal").clientHeight,
                 backgroundColor: "white",
                 borderRadius: "30px",
@@ -151,10 +161,15 @@ const MyModal = (props) => {
                 overflowX: "hidden",
               }}
             >
+              {isCorrect[0] == "#A9DABE" && <CorrectEffect />}
+              {isCorrect[1] == "#A9DABE" && <CorrectEffect />}
+              {isCorrect[2] == "#A9DABE" && <CorrectEffect />}
+
               <button
                 onClick={() => {
                   setOpen(false);
                   setQuize(false);
+                  setAnswer("null");
                 }}
                 style={{ border: "none", backgroundColor: "#00ff0000", alignSelf: "flex-end", padding: "0 5% 0 0" }}
               >
@@ -178,7 +193,7 @@ const MyModal = (props) => {
                           if (data != quizeInfo[storeNum].answer) {
                             setTimeout(() => {
                               setCorrect([...isCorrect.slice(0, idx), "#C6C6C6", ...isCorrect.slice(idx + 1)]);
-                            }, [2000]);
+                            }, [700]);
                           }
                         }}
                       >
@@ -189,9 +204,9 @@ const MyModal = (props) => {
                 })}
               </div>
             </div>
-          ) : null}
+          )}
         </div>
-      ) : null}
+      )}
     </>
   );
 };
