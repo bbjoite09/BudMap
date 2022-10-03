@@ -38,7 +38,10 @@ const Home = () => {
   useEffect(() => {
     saveCookie();
     if (getCookie("accesstoken")) {
-      getStampList().then((res) => setStampCount(res.length));
+      getStampList().then((res) => {
+        setStampCount(res.length);
+        console.log("결과", res.length);
+      });
     }
   }, [localStorage["china"], localStorage["meat"], localStorage["rice"], localStorage["hanra"], localStorage["fish"]]);
   return (
@@ -118,7 +121,7 @@ const Home = () => {
         )}
       </Link>
 
-      <BottomSlider />
+      <BottomSlider stampCount={stampCount} />
     </div>
   );
 };

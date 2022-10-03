@@ -15,6 +15,7 @@ import { axiosUrl } from "../static/url/axiosSrc";
 
 const Story = () => {
   const [storyState, setStoryState] = useState(0);
+
   const getStory = (num, time) => {
     return (
       <div

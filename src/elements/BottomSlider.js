@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
@@ -14,8 +15,9 @@ import store2_done from "../static/images/stamp/store2_done.png";
 import store3_done from "../static/images/stamp/store3_done.png";
 import store4_done from "../static/images/stamp/store4_done.png";
 import store5_done from "../static/images/stamp/store5_done.png";
+import { Link } from "react-router-dom";
 
-const BottomSlider = () => {
+const BottomSlider = (props) => {
   const [state, setState] = useState({
     isPaneOpen: false,
   });
@@ -58,13 +60,25 @@ const BottomSlider = () => {
             alignItems: "center",
           }}
         >
-          <img
-            src={stampBar}
-            onClick={() => {
-              setState({ isPaneOpen: false });
-            }}
-            style={{ position: "absolute", width: "8%", top: "3%", left: "46%" }}
-          />
+          {props.stampCount == 5 ? (
+            <Link to={"/end"}>
+              <img
+                src={stampBar}
+                onClick={() => {
+                  setState({ isPaneOpen: false });
+                }}
+                style={{ position: "absolute", width: "8%", top: "3%", left: "46%" }}
+              />
+            </Link>
+          ) : (
+            <img
+              src={stampBar}
+              onClick={() => {
+                setState({ isPaneOpen: false });
+              }}
+              style={{ position: "absolute", width: "8%", top: "3%", left: "46%" }}
+            />
+          )}
           <img
             src={background}
             style={{ position: "absolute", width: "100%", left: 0, top: "9%", objectFit: "cover" }}

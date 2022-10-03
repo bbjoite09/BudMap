@@ -53,7 +53,7 @@ const opacity = keyframes`{
 
 export const AnimationShine = styled.img`
   position: absolute;
-  animation: ${opacity} 2s linear;
+  animation: ${opacity} 3s linear;
   z-index: 5;
   position: absolute;
   width: 80%;
