@@ -85,12 +85,10 @@ const BottomSlider = (props) => {
                   top: "2%",
                   backgroundColor: "#00ff0000",
                   border: "none",
-                }}
-                onClick={() => {
-                  setState({ isPaneOpen: false });
+                  left: 0,
                 }}
               >
-                <img src={stampBar} style={{ position: "absolute", width: "8%", top: "3%", left: "46%" }} />
+                <img src={stampBar} style={{ position: "absolute", width: "8%", top: "3%" }} />
               </button>
             </Link>
           ) : (
@@ -102,12 +100,13 @@ const BottomSlider = (props) => {
                 top: "2%",
                 backgroundColor: "#00ff0000",
                 border: "none",
+                left: 0,
               }}
               onClick={() => {
                 setState({ isPaneOpen: false });
               }}
             >
-              <img src={stampBar} style={{ position: "absolute", width: "8%", top: "3%", left: "46%" }} />
+              <img src={stampBar} style={{ position: "absolute", width: "8%", top: "3%" }} />
             </button>
           )}
           <img
