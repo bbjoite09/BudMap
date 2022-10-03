@@ -106,3 +106,12 @@ export const AnimationForLogin = styled.img`
   top: 80%;
   left: 22.5%;
 `;
+
+export const vibaration = keyframes`{
+  from {
+    transform: rotate(1deg);
+  }
+  to {
+    transform: rotate(-1deg);
+  }
+}`;

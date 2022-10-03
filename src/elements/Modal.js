@@ -7,6 +7,7 @@ import { getStampList, updateStamp } from "../api/stamp.api";
 import close from "../static/images/modal/close.png";
 import quizeInfo from "../static/strings/quizeInfo";
 import { string } from "../static/strings/string";
+import CorrectEffect from "./CorrectEffect";
 import RoundButton from "./RoundButton";
 import Typography from "./Typography";
 
@@ -46,6 +47,11 @@ const MyModal = (props) => {
       const serverStoreNum = storeNumConverter(storeNum[5]);
       await saveStamp(serverStoreNum);
       await getStampList();
+      setTimeout(() => {
+        setOpen(false);
+        setQuize(false);
+        setAnswer("null");
+      }, [3500]);
     } else if (ans != quizeInfo[storeNum].answer) {
       setAnswer("no");
       setCorrect([...isCorrect.slice(0, idx), "#EF6262", ...isCorrect.slice(idx + 1)]);
@@ -54,7 +60,7 @@ const MyModal = (props) => {
 
   return (
     <>
-      {isOpen ? (
+      {isOpen && (
         <div>
           <div
             style={{
@@ -77,7 +83,7 @@ const MyModal = (props) => {
           <div
             id="modal"
             style={{
-              width: window.innerWidth <= 500 ? "85%" : "400px",
+              width: "85%",
               minHeight: "60vh",
               backgroundColor: "white",
               borderRadius: "30px",
@@ -132,12 +138,13 @@ const MyModal = (props) => {
               퀴즈를 풀어볼까요?
             </RoundButton>
           </div>
-
+          {/* -------------------------------------------------------------  */}
           {/* 퀴즈 - 뒷면 */}
-          {isQuize ? (
+          {isQuize && (
             <div
+              id="box"
               style={{
-                width: window.innerWidth <= 500 ? "85%" : "400px",
+                width: "85%",
                 height: document.getElementById("modal").clientHeight,
                 backgroundColor: "white",
                 borderRadius: "30px",
@@ -154,6 +161,10 @@ const MyModal = (props) => {
                 overflowX: "hidden",
               }}
             >
+              {isCorrect[0] == "#A9DABE" && <CorrectEffect />}
+              {isCorrect[1] == "#A9DABE" && <CorrectEffect />}
+              {isCorrect[2] == "#A9DABE" && <CorrectEffect />}
+
               <button
                 onClick={() => {
                   setOpen(false);
@@ -193,9 +204,9 @@ const MyModal = (props) => {
                 })}
               </div>
             </div>
-          ) : null}
+          )}
         </div>
-      ) : null}
+      )}
     </>
   );
 };
