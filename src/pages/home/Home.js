@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import background from "../../static/images/home/background.png";
 import cloudBottom from "../../static/images/home/cloudBottom.png";
 import cloudTop from "../../static/images/home/cloudTop.png";
-import ic1 from "../../static/images/store/store1.png";
-import ic2 from "../../static/images/store/store2.png";
-import ic3 from "../../static/images/store/store3.png";
-import ic4 from "../../static/images/store/store4.png";
-import ic5 from "../../static/images/store/store5.png";
 import stamp1 from "../../static/images/stamp/store1_done.png";
 import stamp2 from "../../static/images/stamp/store2_done.png";
 import stamp3 from "../../static/images/stamp/store3_done.png";
 import stamp4 from "../../static/images/stamp/store4_done.png";
 import stamp5 from "../../static/images/stamp/store5_done.png";
+import ic1 from "../../static/images/store/store1.png";
+import ic2 from "../../static/images/store/store2.png";
+import ic3 from "../../static/images/store/store3.png";
+import ic4 from "../../static/images/store/store4.png";
+import ic5 from "../../static/images/store/store5.png";
 import { string } from "../../static/strings/string";
 import Chat from "./Chat";
 
@@ -30,7 +30,7 @@ const Home = () => {
     if (getCookie("accesstoken")) {
       getStampList().then(() => console.log("stamp update done"));
     }
-  }, []);
+  }, [localStorage["china"], localStorage["meat"], localStorage["rice"], localStorage["hanra"], localStorage["fish"]]);
   return (
     <div
       style={{
@@ -58,12 +58,12 @@ const Home = () => {
         {localStorage.getItem("rice") ? (
           <img src={stamp1} style={{ position: "absolute", width: "16%", top: "35%", right: 100, zIndex: 1 }} />
         ) : (
-          <img src={ic1} style={{ position: "absolute", width: "18%", top: "35%", right: 100, zIndex: 2 }} />
+          <img src={ic1} style={{ position: "absolute", width: "15%", top: "35%", right: 100, zIndex: 2 }} />
         )}
         {localStorage.getItem("fish") ? (
           <img src={stamp2} style={{ position: "absolute", width: "25%", top: "40%", right: 15, zIndex: 1 }} />
         ) : (
-          <img src={ic2} style={{ position: "absolute", width: "15%", top: "40%", right: 15, zIndex: 2 }} />
+          <img src={ic2} style={{ position: "absolute", width: "13%", top: "40%", right: 15, zIndex: 2 }} />
         )}
       </Link>
       <Link to="/secondSection">
@@ -71,12 +71,12 @@ const Home = () => {
         {localStorage.getItem("china") ? (
           <img src={stamp3} style={{ position: "absolute", width: "20%", top: "57%", left: 25, zIndex: 1 }} />
         ) : (
-          <img src={ic3} style={{ position: "absolute", width: "20%", top: "57%", left: 25, zIndex: 2 }} />
+          <img src={ic3} style={{ position: "absolute", width: "16%", top: "57%", left: 25, zIndex: 2 }} />
         )}
         {localStorage.getItem("meat") ? (
           <img src={stamp4} style={{ position: "absolute", width: "20%", top: "55%", left: 120, zIndex: 1 }} />
         ) : (
-          <img src={ic4} style={{ position: "absolute", width: "20%", top: "55%", left: 120, zIndex: 2 }} />
+          <img src={ic4} style={{ position: "absolute", width: "16%", top: "55%", left: 120, zIndex: 2 }} />
         )}
         {localStorage.getItem("hanra") ? (
           <img src={stamp5} style={{ position: "absolute", width: "20%", top: "48%", left: 90, zIndex: 1 }} />

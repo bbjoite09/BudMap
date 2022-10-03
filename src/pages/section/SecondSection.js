@@ -32,8 +32,8 @@ const SecondSection = () => {
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
 
   useEffect(() => {
-    getStampList();
-  }, []);
+    getStampList().then((res) => console.log(res));
+  }, [localStorage["china"], localStorage["meat"], localStorage["rice"], localStorage["hanra"], localStorage["fish"]]);
 
   return (
     <div

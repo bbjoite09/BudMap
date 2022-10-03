@@ -4,7 +4,7 @@ import axios from "axios";
 import { getCookie } from "../services/cookie";
 
 const stamp = axios.create({
-  baseURL: "https://guro-budmap.herokuapp.com/stamp-user",
+  baseURL: "https://guro-budmap.herokuapp.com/stamp-user/",
   //   baseURL: "http://localhost:3002/stamp-user",
   headers: {
     accesstoken: getCookie("accesstoken"),
@@ -14,17 +14,18 @@ const stamp = axios.create({
 
 /** JWT를 이용한 유저의 스탬프 리스트 조회 */
 export const getStampList = async () => {
-  const { data: stampList } = await stamp.get("/");
+  const { data: stampList } = await stamp.get();
   for (const item of stampList.data) {
     localStorage.setItem(changeKeyName(item), item);
   }
+  return stampList.data;
 };
 
 /** 로컬 저장을 위한 키 값 변경
  * 1 : 중국성, 2 : 장어, 3 : 한라산 도새기, 4 : 고기가 맛있는 집, 5 : 떡볶이
  * @param {number} idx
  */
-const changeKeyName = (item) => {
+export const changeKeyName = (item) => {
   switch (item) {
     case 1:
       return "china";
@@ -45,7 +46,6 @@ const changeKeyName = (item) => {
  * @param {string} idx
  */
 export const updateStamp = async (idx) => {
-  const src = `https://guro-budmap.herokuapp.com/stamp-user/${idx}`;
-  const { data } = await stamp.post(src);
+  const { data } = await stamp.post(`${idx}`);
   return data;
 };

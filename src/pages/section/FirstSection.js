@@ -1,32 +1,33 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getStampList } from "../../api/stamp.api";
+import BottomSlider from "../../elements/BottomSlider";
 import Modal from "../../elements/Modal";
+import { getCookie } from "../../services/cookie";
 import arrow from "../../static/images/section/arrow1.png";
 import homeButton from "../../static/images/section/homeButton.png";
-import ic1 from "../../static/images/store/store1.png";
-import ic2 from "../../static/images/store/store2.png";
+import sectionBackground from "../../static/images/section/section1.png";
 import stamp1 from "../../static/images/stamp/store1_done.png";
 import stamp2 from "../../static/images/stamp/store2_done.png";
-import sectionBackground from "../../static/images/section/section1.png";
+import ic1 from "../../static/images/store/store1.png";
+import ic2 from "../../static/images/store/store2.png";
 import store1_1 from "../../static/images/store/store_1_1.jpg";
 import store1_2 from "../../static/images/store/store_1_2.jpg";
 import store2_1 from "../../static/images/store/store_2_1.jpg";
 import store2_2 from "../../static/images/store/store_2_2.jpg";
 import { string } from "../../static/strings/string";
 import Chat from "../home/Chat";
-import BottomSlider from "../../elements/BottomSlider";
-import { getCookie } from "../../services/cookie";
-import { getStampList } from "../../api/stamp.api";
 
 const FirstSection = () => {
   const [isOpen1, setOpen1] = useState(false);
   const [isOpen2, setOpen2] = useState(false);
+
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
 
   useEffect(() => {
     getStampList();
-  }, []);
+  }, [localStorage["china"], localStorage["meat"], localStorage["rice"], localStorage["hanra"], localStorage["fish"]]);
 
   const setChat = () => {
     if (isOpen1 || isOpen2) {
