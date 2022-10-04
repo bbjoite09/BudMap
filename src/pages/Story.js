@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import Typing from "react-kr-typing-anim";
 import styled from "styled-components";
-import { AnimationBig, AnimationForLogin, AnimationLR, AnimationShine, AnimationTB } from "../elements/Animation";
+import { AnimationBig, AnimationForLogin, AnimationTB } from "../elements/Animation";
 import SpeechBubble from "../elements/SpeechBubble";
 import Typography from "../elements/Typography";
+import background from "../static/images/story/background.png";
 import kakaoLoginButton from "../static/images/story/kakaoLoginButton.png";
 import loginDescribe from "../static/images/story/loginDescribe.png";
 import logo from "../static/images/story/logo.png";
 import background1 from "../static/images/story/storyBackground1.png";
 import background2 from "../static/images/story/storyBackground2.png";
+import background2_2 from "../static/images/story/storyBackground2_2.png";
 import background3 from "../static/images/story/storyBackground3.png";
+import background4 from "../static/images/story/storyBackground4.png";
 import story from "../static/strings/story";
 import { axiosUrl } from "../static/url/axiosSrc";
 
 const Story = () => {
   const [storyState, setStoryState] = useState(0);
 
-  const getStory = (num, time) => {
+  const getStory = (num, time1, color, time2) => {
     return (
       <div
         style={{
@@ -24,15 +27,16 @@ const Story = () => {
           flexDirection: "column",
           width: "80vw",
           alignItems: "flex-start",
-          marginTop: "10%",
+          marginTop: "15%",
           marginLeft: "10%",
         }}
       >
         <Typing
           Tag="div"
-          speed={70}
+          speed={50}
           preDelay={0}
           style={{
+            color: color ? color : "black",
             fontSize: "23px",
             lineHeight: "34px",
             fontWeight: "700",
@@ -43,9 +47,10 @@ const Story = () => {
         </Typing>
         <Typing
           Tag="div"
-          speed={60}
-          preDelay={time}
+          speed={50}
+          preDelay={time1}
           style={{
+            color: color ? color : "black",
             fontSize: "23px",
             lineHeight: "34px",
             fontWeight: "700",
@@ -54,6 +59,22 @@ const Story = () => {
         >
           {story[num][1]}
         </Typing>
+        {story[num][2] && (
+          <Typing
+            Tag="div"
+            speed={50}
+            preDelay={time2}
+            style={{
+              color: color ? color : "black",
+              fontSize: "23px",
+              lineHeight: "34px",
+              fontWeight: "700",
+              wordBreak: "keep-all",
+            }}
+          >
+            {story[num][2]}
+          </Typing>
+        )}
         <Typography
           type="speech"
           fontSize="17px"
@@ -129,45 +150,47 @@ const Story = () => {
       )}
       {storyState == 1 && (
         <Container>
+          <img src={background1} style={{ position: "absolute", width: "100%" }} />
           {getStory("num2", 1000)}
-          <AnimationLR src={background1} />
-          <SpeechBubble position="absolute" right="-5%" bottom="19%" width="50%">
+          <SpeechBubble position="absolute" left="5%" bottom="19%" width="50%">
             하암-
           </SpeechBubble>
         </Container>
       )}
       {storyState == 2 && (
         <Container>
-          {getStory("num3", 1000)}
+          <img src={background2_2} style={{ position: "absolute", width: "100%" }} />
+          {getStory("num3", 1000, "white", 2500)}
           <AnimationBig src={background2} style={{ position: "absolute", width: "190%", left: "-45%", bottom: 0 }} />
-          <SpeechBubble position="absolute" right="-5%" top="15%" width="50%">
+          <SpeechBubble position="absolute" right="-5%" top="20%" width="50%">
             어라?
           </SpeechBubble>
         </Container>
       )}
       {storyState == 3 && (
         <Container>
+          <img src={background3} style={{ position: "absolute", width: "100%" }} />
           {getStory("num4", 1900)}
-          <AnimationShine src={background1} />
         </Container>
       )}
       {storyState == 4 && (
         <Container>
-          {getStory("num5", 2500)}
-          <AnimationTB src={background3} />
+          <img src={background2_2} style={{ position: "absolute", width: "100%" }} />
+          {getStory("num5", 2500, "white")}
+          <AnimationTB src={background4} />
           <SpeechBubble position="absolute" left="5%" top="20%" width="65%" height="22%">
             {"이 녀석들 어디에 숨어있는거야?\n반드시 찾고 말겠어!"}
           </SpeechBubble>
         </Container>
       )}
       {storyState == 5 && (
-        <Container>
+        <Container style={{ backgroundColor: "#15966D" }}>
           <img
-            src={background3}
+            src={background}
             style={{
               position: "absolute",
               width: "100%",
-              bottom: window.innerWidth / window.innerHeight >= 0.5 ? "-25%" : "-10%",
+              top: "0%",
             }}
           />
           <img src={logo} style={{ position: "absolute", width: "70%", top: "10%", left: "15%" }} />
