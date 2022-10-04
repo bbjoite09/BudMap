@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Typing from "react-kr-typing-anim";
 import styled from "styled-components";
 import { AnimationBig, AnimationForLogin, AnimationTB } from "../elements/Animation";
+import Loading from "../elements/Loading";
 import SpeechBubble from "../elements/SpeechBubble";
 import Typography from "../elements/Typography";
 import background from "../static/images/story/background.png";
@@ -18,6 +19,7 @@ import { axiosUrl } from "../static/url/axiosSrc";
 
 const Story = () => {
   const [storyState, setStoryState] = useState(0);
+  const [isLoading, setLoading] = useState(false);
 
   const getStory = (num, time1, color, time2) => {
     return (
@@ -195,7 +197,12 @@ const Story = () => {
           />
           <img src={logo} style={{ position: "absolute", width: "70%", top: "10%", left: "15%" }} />
           <AnimationForLogin src={loginDescribe} />
-          <a href={axiosUrl.createUser}>
+          <a
+            href={axiosUrl.createUser}
+            onClick={() => {
+              setLoading(true);
+            }}
+          >
             <img
               src={kakaoLoginButton}
               style={{
@@ -207,6 +214,7 @@ const Story = () => {
               }}
             />
           </a>
+          {isLoading && <Loading />}
         </Container>
       )}
     </div>

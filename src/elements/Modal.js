@@ -44,17 +44,19 @@ const MyModal = (props) => {
 
   const setButtonColor = async (ans, idx) => {
     if (ans == quizeInfo[storeNum].answer) {
-      setLoading(true);
+      setAnswer("yes");
+      setCorrect([...isCorrect.slice(0, idx), "#A9DABE", ...isCorrect.slice(idx + 1)]);
+      setTimeout(() => {
+        setLoading(true);
+      }, [500]);
       const serverStoreNum = storeNumConverter(storeNum[5]);
       await saveStamp(serverStoreNum);
       await getStampList();
-      setAnswer("yes");
-      setCorrect([...isCorrect.slice(0, idx), "#A9DABE", ...isCorrect.slice(idx + 1)]);
       setTimeout(() => {
         setOpen(false);
         setQuize(false);
         setAnswer("null");
-        setLoading(true);
+        setLoading(false);
       }, [3500]);
     } else if (ans != quizeInfo[storeNum].answer) {
       setAnswer("no");
@@ -80,6 +82,7 @@ const MyModal = (props) => {
               setQuize(false);
               setOpen(false);
               setAnswer("null");
+              setLoading(false);
             }}
           />
 
@@ -175,6 +178,7 @@ const MyModal = (props) => {
                   setOpen(false);
                   setQuize(false);
                   setAnswer("null");
+                  setLoading(false);
                 }}
                 style={{ border: "none", backgroundColor: "#00ff0000", alignSelf: "flex-end", padding: "0 5% 0 0" }}
               >
