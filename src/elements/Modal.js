@@ -8,6 +8,7 @@ import close from "../static/images/modal/close.png";
 import quizeInfo from "../static/strings/quizeInfo";
 import { string } from "../static/strings/string";
 import CorrectEffect from "./CorrectEffect";
+import Loading from "./Loading";
 import RoundButton from "./RoundButton";
 import Typography from "./Typography";
 
@@ -39,9 +40,11 @@ const MyModal = (props) => {
   const { isOpen, setOpen, storeNum, src1, src2, logo, setAnswer } = props;
   const [isQuize, setQuize] = useState(false);
   const [isCorrect, setCorrect] = useState(["#C6C6C6", "#C6C6C6", "#C6C6C6"]);
+  const [isLoading, setLoading] = useState(false);
 
   const setButtonColor = async (ans, idx) => {
     if (ans == quizeInfo[storeNum].answer) {
+      setLoading(true);
       const serverStoreNum = storeNumConverter(storeNum[5]);
       await saveStamp(serverStoreNum);
       await getStampList();
@@ -51,6 +54,7 @@ const MyModal = (props) => {
         setOpen(false);
         setQuize(false);
         setAnswer("null");
+        setLoading(true);
       }, [3500]);
     } else if (ans != quizeInfo[storeNum].answer) {
       setAnswer("no");
@@ -164,6 +168,7 @@ const MyModal = (props) => {
               {isCorrect[0] == "#A9DABE" && <CorrectEffect />}
               {isCorrect[1] == "#A9DABE" && <CorrectEffect />}
               {isCorrect[2] == "#A9DABE" && <CorrectEffect />}
+              {isLoading && <Loading />}
 
               <button
                 onClick={() => {
