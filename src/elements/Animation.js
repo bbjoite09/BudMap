@@ -38,6 +38,7 @@ export const AnimationBig = styled.img`
   animation: ${moveBig} 2s linear infinite;
   position: absolute;
   width: 100%;
+  top: 30%;
   left: 0%;
 `;
 
