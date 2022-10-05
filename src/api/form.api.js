@@ -4,7 +4,7 @@ import axios from "axios";
 import { getCookie } from "../services/cookie";
 
 const form = axios.create({
-  baseURL: "https://guro-budmap.herokuapp.com/form",
+  baseURL: "https://pinodev.shop/form",
   headers: {
     accessToken: getCookie("accesstoken"),
   },

@@ -1,4 +1,4 @@
-const baseUrl = `https://guro-budmap.herokuapp.com`;
+const baseUrl = `https://pinodev.shop`;
 
 export const url = {
   userUrl: baseUrl + "/auth",
