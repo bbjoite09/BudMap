@@ -13,7 +13,7 @@ const Chat = (props) => {
         backgroundColor: "white",
         borderRadius: "35px",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignItems: "center",
         marginTop: "7%",
         boxShadow: " 0px 0px 20px rgba(70, 70, 70, 0.6)",
@@ -25,30 +25,31 @@ const Chat = (props) => {
         src={char}
         style={{
           position: "absolute",
-          left: 10,
-          top: -5,
-          width: window.innerWidth / window.innerHeight >= 0.5 ? "15%" : "20%",
+          left: "3%",
+          top: -1,
+          width: "17%",
         }}
       />
-      <Typing
-        speed={70}
-        onDone={onDone}
-        Tag="div"
-        preDelay={750}
-        postDelay={750}
-        fixedWidth
-        style={{
-          width: window.innerWidth / window.innerHeight >= 0.5 ? "75%" : "60%",
-          textAlign: "left",
-          marginLeft: "15%",
-          fontSize: "16px",
-          lineHeight: "24px",
-          fontWeight: "700",
-          wordBreak: "keep-all",
-        }}
-      >
-        {children}
-      </Typing>
+      <div style={{ width: "74%", marginRight: "3%", marginLeft: "23%" }}>
+        <Typing
+          speed={70}
+          onDone={onDone}
+          Tag="div"
+          preDelay={750}
+          postDelay={750}
+          fixedWidth
+          style={{
+            textAlign: "left",
+            width: "100%",
+            fontSize: "16px",
+            lineHeight: "24px",
+            fontWeight: "700",
+            wordBreak: "keep-all",
+          }}
+        >
+          {children}
+        </Typing>
+      </div>
     </div>
   );
 };

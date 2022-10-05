@@ -122,7 +122,7 @@ const MyModal = (props) => {
             </Typography>
             <Typography margin="3% 0 1% 0">{string.storeInfo[storeNum].describe}</Typography>
             <>
-              <MySlider {...settings} style={{ zIndex: "0", width: "110%", marginTop: "3%" }}>
+              <MySlider {...settings} style={{ zIndex: "0", width: "105%", marginTop: "3%" }}>
                 <>
                   <div style={{ paddingLeft: "2%" }}>
                     <img src={src1} style={{ width: "100%", borderRadius: "30px" }} />

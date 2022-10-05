@@ -82,16 +82,24 @@ const Home = () => {
           }
         }}
       >
-        <div style={{ position: "absolute", width: "45%", height: "40%", top: "20%", right: 0 }} />
         {localStorage.getItem("rice") ? (
-          <img src={stamp1} style={{ position: "absolute", width: "16%", top: "35%", right: 100, zIndex: 1 }} />
+          <img src={stamp1} style={{ position: "absolute", width: "16%", top: "35%", right: 100, zIndex: 15 }} />
         ) : (
-          <img src={ic1} style={{ position: "absolute", width: "15%", top: "35%", right: 100, zIndex: 2 }} />
+          <img src={ic1} style={{ position: "absolute", width: "15%", top: "35%", right: 100, zIndex: 15 }} />
         )}
+      </Link>
+      <Link
+        to="/firstSection"
+        onClick={() => {
+          if (getCookie("visit") == undefined) {
+            setCookie("visit", true);
+          }
+        }}
+      >
         {localStorage.getItem("fish") ? (
-          <img src={stamp2} style={{ position: "absolute", width: "25%", top: "40%", right: 15, zIndex: 1 }} />
+          <img src={stamp2} style={{ position: "absolute", width: "25%", top: "40%", right: 15, zIndex: 15 }} />
         ) : (
-          <img src={ic2} style={{ position: "absolute", width: "13%", top: "40%", right: 15, zIndex: 2 }} />
+          <img src={ic2} style={{ position: "absolute", width: "13%", top: "40%", right: 15, zIndex: 15 }} />
         )}
       </Link>
       <Link
@@ -102,17 +110,34 @@ const Home = () => {
           }
         }}
       >
-        <div style={{ position: "absolute", width: "55%", height: "40%", top: "40%", left: 0 }} />
         {localStorage.getItem("china") ? (
           <img src={stamp3} style={{ position: "absolute", width: "20%", top: "57%", left: 25, zIndex: 1 }} />
         ) : (
           <img src={ic3} style={{ position: "absolute", width: "16%", top: "57%", left: 25, zIndex: 2 }} />
         )}
+      </Link>
+      <Link
+        to="/secondSection"
+        onClick={() => {
+          if (getCookie("visit") == undefined) {
+            setCookie("visit", true);
+          }
+        }}
+      >
         {localStorage.getItem("meat") ? (
           <img src={stamp4} style={{ position: "absolute", width: "20%", top: "55%", left: 120, zIndex: 1 }} />
         ) : (
           <img src={ic4} style={{ position: "absolute", width: "16%", top: "55%", left: 120, zIndex: 2 }} />
         )}
+      </Link>
+      <Link
+        to="/secondSection"
+        onClick={() => {
+          if (getCookie("visit") == undefined) {
+            setCookie("visit", true);
+          }
+        }}
+      >
         {localStorage.getItem("hanra") ? (
           <img src={stamp5} style={{ position: "absolute", width: "20%", top: "48%", left: 90, zIndex: 1 }} />
         ) : (
@@ -139,7 +164,7 @@ const AnimationTop = styled.img`
   animation: ${moveRignt} 18s linear infinite;
   z-index: 5;
   width: 400%;
-  top: 15%;
+  top: 10%;
 `;
 
 const moveLeft = keyframes`{
