@@ -70,7 +70,13 @@ const SecondSection = () => {
         <img src={homeButton} style={{ position: "absolute", width: "10%", right: 80, top: "15%" }} />
       </Link>
       <Link to="/firstSection">
-        <img src={arrow} style={{ position: "absolute", width: "10%", right: 30, top: "15%" }} />
+        <img
+          src={arrow}
+          onClick={() => {
+            setOpen3(!isOpen3);
+          }}
+          style={{ position: "absolute", width: "10%", right: 30, top: "15%" }}
+        />
       </Link>
 
       {localStorage.getItem("china") ? (
@@ -95,7 +101,13 @@ const SecondSection = () => {
       />
 
       {localStorage.getItem("meat") ? (
-        <img src={stamp4} style={{ position: "absolute", width: "18%", left: "24%", top: "58%" }} />
+        <img
+          src={stamp4}
+          onClick={() => {
+            setOpen4(!isOpen4);
+          }}
+          style={{ position: "absolute", width: "18%", left: "24%", top: "58%" }}
+        />
       ) : (
         <img
           src={ic4}
@@ -115,7 +127,13 @@ const SecondSection = () => {
         setAnswer={setAnswer}
       />
       {localStorage.getItem("hanra") ? (
-        <img src={stamp5} style={{ position: "absolute", width: "18%", left: "15%", top: "39%" }} />
+        <img
+          src={stamp5}
+          onClick={() => {
+            setOpen5(!isOpen5);
+          }}
+          style={{ position: "absolute", width: "18%", left: "15%", top: "39%" }}
+        />
       ) : (
         <img
           src={ic5}

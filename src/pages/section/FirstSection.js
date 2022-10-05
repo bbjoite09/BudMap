@@ -66,6 +66,9 @@ const FirstSection = () => {
       {localStorage.getItem("rice") ? (
         <img
           src={stamp1}
+          onClick={() => {
+            setOpen1(!isOpen1);
+          }}
           style={{
             position: "absolute",
             width: "18%",
@@ -97,7 +100,13 @@ const FirstSection = () => {
         setAnswer={setAnswer}
       />
       {localStorage.getItem("fish") ? (
-        <img src={stamp2} style={{ position: "absolute", width: "30%", right: "10%", top: "41%" }} />
+        <img
+          src={stamp2}
+          onClick={() => {
+            setOpen2(!isOpen2);
+          }}
+          style={{ position: "absolute", width: "30%", right: "10%", top: "41%" }}
+        />
       ) : (
         <img
           src={ic2}

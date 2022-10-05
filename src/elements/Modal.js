@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import styled from "styled-components";
-import { getStampList, updateStamp } from "../api/stamp.api";
+import { changeKeyName, getStampList, updateStamp } from "../api/stamp.api";
 import close from "../static/images/modal/close.png";
 import quizeInfo from "../static/strings/quizeInfo";
 import { string } from "../static/strings/string";
@@ -135,14 +135,17 @@ const MyModal = (props) => {
               </MySlider>
             </>
             <RoundButton
-              color="#ACDDC0"
+              color={localStorage[changeKeyName(parseInt(storeNumConverter(storeNum[5])))] ? "#C6C6C6" : "#ACDDC0"}
               width="80%"
               margin="5% 0 6% 0"
               onClick={() => {
                 setQuize(true);
               }}
+              disabled={localStorage[changeKeyName(parseInt(storeNumConverter(storeNum[5])))] ? "disabled" : null}
             >
-              퀴즈를 풀어볼까요?
+              {localStorage[changeKeyName(parseInt(storeNumConverter(storeNum[5])))]
+                ? "퀴즈를 풀었어요!"
+                : "퀴즈를 풀어볼까요?"}
             </RoundButton>
           </div>
           {/* -------------------------------------------------------------  */}
