@@ -3,12 +3,15 @@ import Typing from "react-kr-typing-anim";
 import styled from "styled-components";
 import { AnimationBig, AnimationForLogin, AnimationTB } from "../elements/Animation";
 import Loading from "../elements/Loading";
-import SpeechBubble from "../elements/SpeechBubble";
 import Typography from "../elements/Typography";
 import background from "../static/images/story/background.png";
 import kakaoLoginButton from "../static/images/story/kakaoLoginButton.png";
 import loginDescribe from "../static/images/story/loginDescribe.png";
 import logo from "../static/images/story/logo.png";
+import speech1 from "../static/images/story/speech1.png";
+import speech2 from "../static/images/story/speech2.png";
+import speech3 from "../static/images/story/speech3.png";
+import speech4 from "../static/images/story/speech4.png";
 import background1 from "../static/images/story/storyBackground1.png";
 import background2 from "../static/images/story/storyBackground2.png";
 import background2_2 from "../static/images/story/storyBackground2_2.png";
@@ -157,36 +160,31 @@ const Story = () => {
       {storyState == 1 && (
         <Container>
           <img src={background1} style={{ position: "absolute", width: "100%" }} />
-          {getStory("num2", 1000)}
-          <SpeechBubble position="absolute" left="5%" bottom="19%" width="50%">
-            하암-
-          </SpeechBubble>
+          {getStory("num2", 300)}
+          <img src={speech1} style={{ position: "absolute", width: "60%", left: 50, bottom: 120 }} />
         </Container>
       )}
       {storyState == 2 && (
         <Container>
           <img src={background2_2} style={{ position: "absolute", width: "100%" }} />
-          {getStory("num3", 1000, "white", 2500)}
+          {getStory("num3", 1000, "white", 1700)}
           <AnimationBig src={background2} style={{ position: "absolute", width: "190%", left: "-45%", bottom: 0 }} />
-          <SpeechBubble position="absolute" right="-5%" top="20%" width="50%">
-            어라?
-          </SpeechBubble>
+          <img src={speech2} style={{ position: "absolute", width: "70%", left: "15%", bottom: 100 }} />
         </Container>
       )}
       {storyState == 3 && (
         <Container>
           <img src={background3} style={{ position: "absolute", width: "100%" }} />
-          {getStory("num4", 900)}
+          {getStory("num4", 500)}
+          <img src={speech3} style={{ position: "absolute", width: "30%", left: "18%", bottom: 150 }} />
         </Container>
       )}
       {storyState == 4 && (
         <Container>
           <img src={background2_2} style={{ position: "absolute", width: "100%" }} />
-          {getStory("num5", 2500, "white")}
+          {getStory("num5", 1000, "white")}
+          <img src={speech4} style={{ position: "absolute", width: "70%", left: "5%", top: "20%", zIndex: 3 }} />
           <AnimationTB src={background4} />
-          <SpeechBubble position="absolute" left="5%" top="20%" width="65%" height="22%">
-            {"이 녀석들 어디에 숨어있는거야?\n반드시 찾고 말겠어!"}
-          </SpeechBubble>
         </Container>
       )}
       {storyState == 5 && (

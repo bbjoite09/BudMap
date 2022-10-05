@@ -50,14 +50,14 @@ const MyModal = (props) => {
       setTimeout(() => {
         setLoading(true);
         setCorrect([...isCorrect.slice(0, idx), "#C6C6C6", ...isCorrect.slice(idx + 1)]);
-      }, [800]);
+      }, [900]);
       const serverStoreNum = storeNumConverter(storeNum[5]);
       await saveStamp(serverStoreNum);
       await getStampList();
       setTimeout(() => {
         setOpen(false);
         setQuize(false);
-        setAnswer("null");
+        setAnswer(" ");
         setLoading(false);
       }, [3500]);
     } else if (ans != quizeInfo[storeNum].answer) {
@@ -65,7 +65,6 @@ const MyModal = (props) => {
         setAnswer("no");
       }, 100);
       setCorrect([...isCorrect.slice(0, idx), "#EF6262", ...isCorrect.slice(idx + 1)]);
-
       setAnswer("null");
     }
   };
@@ -87,7 +86,7 @@ const MyModal = (props) => {
             onClick={() => {
               setQuize(false);
               setOpen(false);
-              setAnswer("null");
+              setAnswer(" ");
               setLoading(false);
             }}
           />
@@ -116,7 +115,7 @@ const MyModal = (props) => {
             <button
               onClick={() => {
                 setOpen(false);
-                setAnswer("null");
+                setAnswer(" ");
               }}
               style={{ border: "none", backgroundColor: "#00ff0000", alignSelf: "flex-end", padding: "5% 5% 0 0" }}
             >
@@ -192,7 +191,7 @@ const MyModal = (props) => {
                 onClick={() => {
                   setOpen(false);
                   setQuize(false);
-                  setAnswer("null");
+                  setAnswer(" ");
                   setLoading(false);
                 }}
                 style={{ border: "none", backgroundColor: "#00ff0000", alignSelf: "flex-end", padding: "0 5% 0 0" }}

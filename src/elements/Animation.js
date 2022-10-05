@@ -38,7 +38,7 @@ export const AnimationBig = styled.img`
   animation: ${moveBig} 2s linear infinite;
   position: absolute;
   width: 100%;
-  top: 30%;
+  top: 35%;
   left: 0%;
 `;
 
@@ -64,13 +64,13 @@ export const AnimationShine = styled.img`
 
 const moveTB = keyframes`{
   0% {
-    top: 30%;
+    top: 40%;
   }
   50% {
-    top: 33%;
+    top: 43%;
   }
   100%{
-    top: 30%;
+    top: 40%;
   }
 }`;
 
@@ -80,9 +80,8 @@ export const AnimationTB = styled.img`
   animation-iteration-count: 2;
   z-index: 5;
   position: absolute;
-  width: 120%;
-  left: -7%;
-  top: 30%;
+  width: 100%;
+  top: 40%;
 `;
 
 const moveForLogin = keyframes`{
