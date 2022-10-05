@@ -37,7 +37,7 @@ const FirstSection = () => {
     } else if (isAnswer == "yes") {
       return chatBubbble.QuizeYes[0];
     } else if (isAnswer == "null") {
-      return "";
+      return " ";
     } else if (isOpen1 || isOpen2) {
       return string.storeInfo.stamp.describe;
     } else {
