@@ -4,7 +4,7 @@ import axios from "axios";
 import { getCookie } from "../services/cookie";
 
 const form = axios.create({
-  baseURL: "www.bud.pinodev.shop/form",
+  baseURL: "https://www.bud.pinodev.shop/form",
   headers: {
     accessToken: getCookie("accesstoken"),
   },

@@ -1,4 +1,4 @@
-const baseUrl = `www.bud.pinodev.shop`;
+const baseUrl = `https://www.bud.pinodev.shop`;
 
 export const url = {
   userUrl: baseUrl + "/auth",
