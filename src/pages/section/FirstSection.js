@@ -57,10 +57,10 @@ const FirstSection = () => {
       <img src={sectionBackground} style={{ position: "absolute", width: "100%", objectFit: "cover", top: "0%" }} />
       <Chat>{setChat(stampCount)}</Chat>
       <Link to={homeSrc}>
-        <img src={homeButton} style={{ position: "absolute", width: "10%", left: 80, bottom: "9vh" }} />
+        <img src={homeButton} style={{ position: "absolute", width: "13%", left: 70, bottom: "9vh" }} />
       </Link>
       <Link to="/secondSection">
-        <img src={arrow} style={{ position: "absolute", width: "10%", left: 30, bottom: "9vh" }} />
+        <img src={arrow} style={{ position: "absolute", width: "13%", left: 20, bottom: "9vh" }} />
       </Link>
 
       {localStorage.getItem("rice") ? (

@@ -67,7 +67,7 @@ const SecondSection = () => {
       />
       <Chat>{setChat(stampCount)}</Chat>
       <Link to={homeSrc}>
-        <img src={homeButton} style={{ position: "absolute", width: "10%", right: 80, top: "15%" }} />
+        <img src={homeButton} style={{ position: "absolute", width: "13%", left: 20, bottom: "9vh" }} />
       </Link>
       <Link to="/firstSection">
         <img
@@ -75,7 +75,7 @@ const SecondSection = () => {
           onClick={() => {
             setOpen3(!isOpen3);
           }}
-          style={{ position: "absolute", width: "10%", right: 30, top: "15%" }}
+          style={{ position: "absolute", width: "13%", left: 70, bottom: "9vh" }}
         />
       </Link>
 

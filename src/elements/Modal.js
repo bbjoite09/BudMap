@@ -61,6 +61,7 @@ const MyModal = (props) => {
     } else if (ans != quizeInfo[storeNum].answer) {
       setAnswer("no");
       setCorrect([...isCorrect.slice(0, idx), "#EF6262", ...isCorrect.slice(idx + 1)]);
+      setAnswer("null");
     }
   };
 
@@ -175,7 +176,6 @@ const MyModal = (props) => {
               {isCorrect[1] == "#A9DABE" && <CorrectEffect />}
               {isCorrect[2] == "#A9DABE" && <CorrectEffect />}
               {isLoading && <Loading />}
-
               <button
                 onClick={() => {
                   setOpen(false);
@@ -191,21 +191,24 @@ const MyModal = (props) => {
               <Typography type="title" margin="0 0 3% 0">
                 {string.storeInfo[storeNum].title}
               </Typography>
-              <Typography margin="0 0 3% 0">{quizeInfo[storeNum].quize}</Typography>
-              <div style={{ width: "100%" }}>
+              <Typography type="quize" margin="0 0 3% 0">
+                {quizeInfo[storeNum].quize}
+              </Typography>
+              <div style={{ width: "100%", marginTop: "-3%" }}>
                 {quizeInfo[storeNum].ex.map((data, idx) => {
                   return (
                     <div key={idx} style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
                       <RoundButton
                         color={isCorrect[idx]}
-                        width="65%"
+                        width="70%"
+                        height="68%"
                         margin="3% 0 3% 0"
                         onClick={() => {
                           setButtonColor(data, idx);
                           if (data != quizeInfo[storeNum].answer) {
                             setTimeout(() => {
                               setCorrect([...isCorrect.slice(0, idx), "#C6C6C6", ...isCorrect.slice(idx + 1)]);
-                            }, [700]);
+                            }, [10000000]);
                           }
                         }}
                       >

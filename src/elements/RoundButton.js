@@ -3,7 +3,7 @@ import React from "react";
 import Typography from "./Typography";
 
 const RoundButton = (props) => {
-  const { children, color, width, margin, onClick, disabled } = props;
+  const { children, color, width, margin, onClick, disabled, height } = props;
 
   return (
     <>
@@ -13,10 +13,10 @@ const RoundButton = (props) => {
           alignItems: "center",
           justifyContent: "center",
           width,
-          height: "56px",
+          height: height ? height : "57",
           backgroundColor: color,
           border: "none",
-          borderRadius: "30px",
+          borderRadius: "70px",
           margin,
         }}
         onClick={onClick}
