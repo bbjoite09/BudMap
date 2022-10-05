@@ -4,7 +4,7 @@ import axios from "axios";
 import { getCookie } from "../services/cookie";
 
 const stamp = axios.create({
-  baseURL: "https://www.bud.pinodev.shop/stamp-user",
+  baseURL: "https://www.pinodev.shop/stamp-user",
   //   baseURL: "http://localhost:3002/stamp-user",
   headers: {
     accesstoken: getCookie("accesstoken"),
