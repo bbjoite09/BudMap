@@ -27,10 +27,9 @@ const Story = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-          width: "80vw",
+          width: "100%",
           alignItems: "center",
           marginTop: "15%",
-          marginLeft: "10%",
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
