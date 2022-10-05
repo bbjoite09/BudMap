@@ -24,7 +24,7 @@ const FirstSection = () => {
   const [isOpen1, setOpen1] = useState(false);
   const [isOpen2, setOpen2] = useState(false);
   const [stampCount, setStampCount] = useState(0);
-  const [isAnswer, setAnswer] = useState("null");
+  const [isAnswer, setAnswer] = useState("");
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
 
   useEffect(() => {
@@ -36,12 +36,15 @@ const FirstSection = () => {
       return chatBubbble.QuizeNo;
     } else if (isAnswer == "yes") {
       return chatBubbble.QuizeYes[0];
+    } else if (isAnswer == "null") {
+      return "";
     } else if (isOpen1 || isOpen2) {
       return string.storeInfo.stamp.describe;
     } else {
       return string.clickIcon[num];
     }
   };
+  console.log(isAnswer);
 
   return (
     <div

@@ -28,44 +28,16 @@ const Story = () => {
           display: "flex",
           flexDirection: "column",
           width: "80vw",
-          alignItems: "flex-start",
+          alignItems: "center",
           marginTop: "15%",
           marginLeft: "10%",
         }}
       >
-        <Typing
-          Tag="div"
-          speed={50}
-          preDelay={0}
-          style={{
-            color: color ? color : "black",
-            fontSize: "23px",
-            lineHeight: "34px",
-            fontWeight: "700",
-            wordBreak: "keep-all",
-          }}
-        >
-          {story[num][0]}
-        </Typing>
-        <Typing
-          Tag="div"
-          speed={50}
-          preDelay={time1}
-          style={{
-            color: color ? color : "black",
-            fontSize: "23px",
-            lineHeight: "34px",
-            fontWeight: "700",
-            wordBreak: "keep-all",
-          }}
-        >
-          {story[num][1]}
-        </Typing>
-        {story[num][2] && (
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
           <Typing
             Tag="div"
-            speed={50}
-            preDelay={time2}
+            speed={30}
+            preDelay={0}
             style={{
               color: color ? color : "black",
               fontSize: "23px",
@@ -74,9 +46,39 @@ const Story = () => {
               wordBreak: "keep-all",
             }}
           >
-            {story[num][2]}
+            {story[num][0]}
           </Typing>
-        )}
+          <Typing
+            Tag="div"
+            speed={30}
+            preDelay={time1}
+            style={{
+              color: color ? color : "black",
+              fontSize: "23px",
+              lineHeight: "34px",
+              fontWeight: "700",
+              wordBreak: "keep-all",
+            }}
+          >
+            {story[num][1]}
+          </Typing>
+          {story[num][2] && (
+            <Typing
+              Tag="div"
+              speed={30}
+              preDelay={time2}
+              style={{
+                color: color ? color : "black",
+                fontSize: "23px",
+                lineHeight: "34px",
+                fontWeight: "700",
+                wordBreak: "keep-all",
+              }}
+            >
+              {story[num][2]}
+            </Typing>
+          )}
+        </div>
         <Typography
           type="speech"
           fontSize="17px"
@@ -123,7 +125,7 @@ const Story = () => {
           <Typing
             Tag="div"
             preDelay={300}
-            speed={70}
+            speed={40}
             postDelay={1500}
             style={{
               fontSize: "23px",
@@ -172,7 +174,7 @@ const Story = () => {
       {storyState == 3 && (
         <Container>
           <img src={background3} style={{ position: "absolute", width: "100%" }} />
-          {getStory("num4", 1900)}
+          {getStory("num4", 900)}
         </Container>
       )}
       {storyState == 4 && (
