@@ -26,7 +26,6 @@ import { getCookie, setCookie } from "../../services/cookie";
 const Home = () => {
   const [next, setNext] = useState(0);
   const [stampCount, setStampCount] = useState(0);
-
   const setChat = (num) => {
     if (getCookie("visit")) {
       return string.clickIcon[num];
