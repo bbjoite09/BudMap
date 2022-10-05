@@ -32,7 +32,7 @@ const Chat = (props) => {
       />
       <div style={{ width: "74%", marginRight: "3%", marginLeft: "23%" }}>
         <Typing
-          speed={70}
+          speed={30}
           onDone={onDone}
           Tag="div"
           preDelay={750}
