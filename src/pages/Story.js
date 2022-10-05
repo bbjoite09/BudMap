@@ -38,6 +38,7 @@ const Story = () => {
             Tag="div"
             speed={30}
             preDelay={0}
+            fixedWidth
             style={{
               color: color ? color : "black",
               fontSize: "23px",
@@ -52,6 +53,7 @@ const Story = () => {
             Tag="div"
             speed={30}
             preDelay={time1}
+            fixedWidth
             style={{
               color: color ? color : "black",
               fontSize: "23px",
@@ -67,6 +69,7 @@ const Story = () => {
               Tag="div"
               speed={30}
               preDelay={time2}
+              fixedWidth
               style={{
                 color: color ? color : "black",
                 fontSize: "23px",

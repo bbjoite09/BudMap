@@ -30,7 +30,7 @@ const SecondSection = () => {
   const [isOpen3, setOpen3] = useState(false);
   const [isOpen4, setOpen4] = useState(false);
   const [isOpen5, setOpen5] = useState(false);
-  const [isAnswer, setAnswer] = useState("null");
+  const [isAnswer, setAnswer] = useState("");
   const [stampCount, setStampCount] = useState(0);
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
 
@@ -43,6 +43,8 @@ const SecondSection = () => {
       return chatBubbble.QuizeNo;
     } else if (isAnswer == "yes") {
       return chatBubbble.QuizeYes[0];
+    } else if (isAnswer == "null") {
+      return " ";
     } else if (isOpen3 || isOpen4 || isOpen5) {
       return string.storeInfo.stamp.describe;
     } else {
