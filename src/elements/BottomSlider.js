@@ -3,7 +3,7 @@
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 import React, { useState } from "react";
-import stampBar from "../static/images/stamp/stampbar.png";
+import close from "../static/images/modal/close.png";
 import background from "../static/images/stamp/stampBackground.png";
 import store1_none from "../static/images/stamp/store1_none.png";
 import store2_none from "../static/images/stamp/store2_none.png";
@@ -50,7 +50,7 @@ const BottomSlider = (props) => {
           setState({ isPaneOpen: true });
         }}
       >
-        <img src={stampBar} style={{ position: "absolute", top: "30%", width: "8%", left: "46%" }} />
+        <text style={{ color: "#83C4D6", fontWeight: "900", fontSize: "24px" }}>스탬프 확인</text>
       </button>
       <SlidingPane
         className="some-custom-class"
@@ -91,7 +91,7 @@ const BottomSlider = (props) => {
                   left: 0,
                 }}
               >
-                <img src={stampBar} style={{ position: "absolute", width: "8%", top: "3%" }} />
+                <img src={close} style={{ position: "absolute", width: "5%", top: "4%", zIndex: 10 }} />
               </button>
             </Link>
           ) : (
@@ -102,8 +102,9 @@ const BottomSlider = (props) => {
                 position: "absolute",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
+                justifyContent: "flex-end",
                 top: "2%",
+                paddingRight: "7%",
                 backgroundColor: "#00ff0000",
                 border: "none",
                 left: 0,
@@ -112,12 +113,12 @@ const BottomSlider = (props) => {
                 setState({ isPaneOpen: false });
               }}
             >
-              <img src={stampBar} style={{ position: "absolute", width: "8%", top: "3%" }} />
+              <img src={close} style={{ position: "absolute", width: "5%", top: "4%", zIndex: 10 }} />
             </button>
           )}
           <img
             src={background}
-            style={{ position: "absolute", width: "100%", left: 0, top: "9%", objectFit: "cover" }}
+            style={{ position: "absolute", width: "100%", left: 0, top: "3%", objectFit: "cover", zIndex: 5 }}
           />
 
           {/* 스탬프 배치 */}
@@ -126,9 +127,11 @@ const BottomSlider = (props) => {
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
+              justifyContent: "flex-end",
               zIndex: 15,
               width: "100%",
               marginTop: "33%",
+              marginLeft: "7%",
             }}
           >
             <div

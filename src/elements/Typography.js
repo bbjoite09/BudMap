@@ -24,8 +24,21 @@ const Typography = (props) => {
     bottom,
     zIndex,
   };
-  const button = {
+  const quize = {
     fontWeight: "700",
+    fontSize: "16px",
+    lineHeight: "22px",
+    whiteSpace: "pre-wrap",
+    wordSpacing: "-2px",
+    margin: margin,
+    color,
+    position,
+    right,
+    bottom,
+    zIndex,
+  };
+  const button = {
+    fontWeight: "900",
     fontSize: "18px",
     lineHeight: "24.5px",
     whiteSpace: "pre-wrap",
@@ -61,6 +74,12 @@ const Typography = (props) => {
   } else if (type == "speech") {
     return (
       <p style={speech} onClick={onClick}>
+        {children}
+      </p>
+    );
+  } else if (type == "quize") {
+    return (
+      <p style={quize} onClick={onClick}>
         {children}
       </p>
     );

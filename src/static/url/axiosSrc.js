@@ -1,4 +1,4 @@
-const baseUrl = `http://54.197.28.78:8080`;
+const baseUrl = `https://guro-budmap.herokuapp.com`;
 
 export const url = {
   userUrl: baseUrl + "/auth",
