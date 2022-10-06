@@ -84,8 +84,9 @@ const BottomSlider = (props) => {
                   position: "absolute",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
+                  justifyContent: "flex-end",
                   top: "2%",
+                  paddingRight: "7%",
                   backgroundColor: "#00ff0000",
                   border: "none",
                   left: 0,
@@ -136,7 +137,7 @@ const BottomSlider = (props) => {
           >
             <div
               style={{
-                width: "100%",
+                width: "80%",
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-around",
