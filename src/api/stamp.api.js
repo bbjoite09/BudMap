@@ -2,9 +2,10 @@
 
 import axios from "axios";
 import { getCookie } from "../services/cookie";
+import { axiosUrl } from "../static/url/axiosSrc";
 
 const stamp = axios.create({
-  baseURL: "https://www.pinodev.shop/stamp-user",
+  baseURL: axiosUrl.getStamp,
   //   baseURL: "http://localhost:3002/stamp-user",
   headers: {
     accesstoken: getCookie("accesstoken"),

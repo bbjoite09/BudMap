@@ -2,9 +2,10 @@
 /** 만들어버린 FORM DATA */
 import axios from "axios";
 import { getCookie } from "../services/cookie";
+import { axiosUrl } from "../static/url/axiosSrc";
 
 const form = axios.create({
-  baseURL: "https://www.pinodev.shop/form",
+  baseURL: axiosUrl.setForm,
   headers: {
     accessToken: getCookie("accesstoken"),
   },
