@@ -50,7 +50,7 @@ const FirstSection = () => {
     <div
       style={{
         width: "100%",
-        height: "100vh",
+        height: `${/iPhone|iPad|iPod/i.test(navigator.userAgent) ? "-webkit-fill-available" : "100vh"}`,
         display: "flex",
         justifyContent: "center",
         backgroundColor: "#83C4D6",

@@ -4,18 +4,20 @@ import axios from "axios";
 import { getCookie } from "../services/cookie";
 import { axiosUrl } from "../static/url/axiosSrc";
 
-const stamp = axios.create({
-  baseURL: axiosUrl.getStamp,
-  //   baseURL: "http://localhost:3002/stamp-user",
-  headers: {
-    accesstoken: getCookie("accesstoken"),
-  },
-  withCredentials: true,
-});
+const stamp = () => {
+  return axios.create({
+    baseURL: axiosUrl.getStamp,
+    //   baseURL: "http://localhost:3002/stamp-user",
+    headers: {
+      accesstoken: getCookie("accesstoken"),
+    },
+    withCredentials: true,
+  });
+};
 
 /** JWT를 이용한 유저의 스탬프 리스트 조회 */
 export const getStampList = async () => {
-  const { data: stampList } = await stamp.get("/");
+  const { data: stampList } = await stamp().get("/");
   for (const item of stampList.data) {
     localStorage.setItem(changeKeyName(item), item);
   }
@@ -47,6 +49,6 @@ export const changeKeyName = (item) => {
  * @param {string} idx
  */
 export const updateStamp = async (idx) => {
-  const { data } = await stamp.post(`/${idx}`);
+  const { data } = await stamp().post(`/${idx}`);
   return data;
 };
