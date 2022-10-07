@@ -23,8 +23,8 @@ const Loading = () => {
 };
 
 const Container = styled.div`
-  background-color: rgba(0, 0, 0, 0.4);
-  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 120%;
   height: 100%;
   position: absolute;
   display: flex;
