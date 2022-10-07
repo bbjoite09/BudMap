@@ -25,7 +25,7 @@ function App() {
 }
 
 const BackgroundStyle = styled.div`
-  background-color: #dcdcdc;
+  background-color: #e8f5fe;
   position: relative;
 `;
 
