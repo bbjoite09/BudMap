@@ -44,10 +44,10 @@ export const AnimationBig = styled.img`
 
 const opacity = keyframes`{
   from {
-    opacity: 1
+    opacity: 0.2
     }
   to {
-    opacity: 0.2
+    opacity: 1
   }
 }`;
 
@@ -58,7 +58,7 @@ export const AnimationShine = styled.img`
   position: absolute;
   width: 80%;
   left: 13%;
-  opacity: 0.2;
+  opacity: 1;
   top: 23%;
 `;
 

@@ -7,7 +7,7 @@ import Typography from "./Typography";
 
 const FormModal = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { isOpen, setOpen } = props;
+  const { isOpen, setOpen, setNext } = props;
 
   return (
     <div>
@@ -27,7 +27,6 @@ const FormModal = (props) => {
               setOpen(false);
             }}
           />
-
           <div
             id="modal"
             style={{
@@ -50,6 +49,7 @@ const FormModal = (props) => {
           >
             <button
               onClick={() => {
+                setNext(2);
                 setOpen(false);
               }}
               style={{ border: "none", backgroundColor: "#00ff0000", alignSelf: "flex-end", padding: "5% 5% 0 0" }}

@@ -4,7 +4,7 @@ import char from "../../static/images/home/char.png";
 
 const Chat = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { children, onDone } = props;
+  const { children, onDone, position, top, left } = props;
   return (
     <div
       style={{
@@ -17,7 +17,9 @@ const Chat = (props) => {
         alignItems: "center",
         marginTop: "7%",
         boxShadow: " 0px 0px 20px rgba(70, 70, 70, 0.6)",
-        position: "relative",
+        position: position ? position : "relative",
+        top,
+        left,
         zIndex: 100,
       }}
     >
