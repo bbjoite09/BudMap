@@ -109,8 +109,10 @@ export const AnimationForLogin = styled.img`
 export const vibaration = keyframes`{
   from {
     transform: rotate(1deg);
+    background-color: white;
   }
   to {
     transform: rotate(-1deg);
+    background-color: #f2f1ed;
   }
 }`;

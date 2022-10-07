@@ -33,13 +33,18 @@ const SecondSection = () => {
   const [isAnswer, setAnswer] = useState("");
   const [stampCount, setStampCount] = useState(0);
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
+  const [isOpen, setOpen] = useState("");
 
   useEffect(() => {
     getStampList().then((res) => setStampCount(res.length));
   }, [localStorage["china"], localStorage["meat"], localStorage["rice"], localStorage["hanra"], localStorage["fish"]]);
 
   const setChat = (num) => {
-    if (isAnswer == "no") {
+    if (isOpen && stampCount == 5) {
+      return chatBubbble.stampOpen[1];
+    } else if (isOpen) {
+      return chatBubbble.stampOpen[0];
+    } else if (isAnswer == "no") {
       return chatBubbble.QuizeNo;
     } else if (isAnswer == "yes") {
       return chatBubbble.QuizeYes[0];
@@ -82,14 +87,20 @@ const SecondSection = () => {
       </Link>
 
       {localStorage.getItem("china") ? (
-        <img src={stamp3} style={{ position: "absolute", width: "18%", left: "4%", top: "55%" }} />
+        <img
+          src={stamp3}
+          onClick={() => {
+            setOpen3(!isOpen3);
+          }}
+          style={{ position: "absolute", width: "18%", left: "4%", top: "55%", zIndex: 1 }}
+        />
       ) : (
         <img
           src={ic3}
           onClick={() => {
             setOpen3(!isOpen3);
           }}
-          style={{ position: "absolute", width: "18%", left: "4%", top: "55%" }}
+          style={{ position: "absolute", width: "18%", left: "4%", top: "55%", zIndex: 2 }}
         />
       )}
       <Modal
@@ -108,7 +119,7 @@ const SecondSection = () => {
           onClick={() => {
             setOpen4(!isOpen4);
           }}
-          style={{ position: "absolute", width: "18%", left: "24%", top: "58%" }}
+          style={{ position: "absolute", width: "18%", left: "24%", top: "58%", zIndex: 1 }}
         />
       ) : (
         <img
@@ -116,7 +127,7 @@ const SecondSection = () => {
           onClick={() => {
             setOpen4(!isOpen4);
           }}
-          style={{ position: "absolute", width: "18%", left: "24%", top: "58%" }}
+          style={{ position: "absolute", width: "18%", left: "24%", top: "58%", zIndex: 2 }}
         />
       )}
       <Modal
@@ -134,7 +145,7 @@ const SecondSection = () => {
           onClick={() => {
             setOpen5(!isOpen5);
           }}
-          style={{ position: "absolute", width: "18%", left: "15%", top: "39%" }}
+          style={{ position: "absolute", width: "18%", left: "15%", top: "39%", zIndex: 1 }}
         />
       ) : (
         <img
@@ -142,7 +153,7 @@ const SecondSection = () => {
           onClick={() => {
             setOpen5(!isOpen5);
           }}
-          style={{ position: "absolute", width: "18%", left: "15%", top: "39%" }}
+          style={{ position: "absolute", width: "18%", left: "15%", top: "39%", zIndex: 2 }}
         />
       )}
       <Modal

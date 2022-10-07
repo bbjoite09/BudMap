@@ -26,13 +26,18 @@ const FirstSection = () => {
   const [stampCount, setStampCount] = useState(0);
   const [isAnswer, setAnswer] = useState("");
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
+  const [isOpen, setOpen] = useState("");
 
   useEffect(() => {
     getStampList().then((res) => setStampCount(res.length));
   }, [localStorage["china"], localStorage["meat"], localStorage["rice"], localStorage["hanra"], localStorage["fish"]]);
 
   const setChat = (num) => {
-    if (isAnswer == "no") {
+    if (isOpen && stampCount == 5) {
+      return chatBubbble.stampOpen[1];
+    } else if (isOpen) {
+      return chatBubbble.stampOpen[0];
+    } else if (isAnswer == "no") {
       return chatBubbble.QuizeNo;
     } else if (isAnswer == "yes") {
       return chatBubbble.QuizeYes[0];
@@ -76,7 +81,8 @@ const FirstSection = () => {
             position: "absolute",
             width: "18%",
             left: 60,
-            top: window.innerWidth / window.innerHeight >= 0.5 ? "50%" : "s%",
+            top: window.innerWidth / window.innerHeight >= 0.5 ? "50%" : "45%",
+            zIndex: 1,
           }}
         />
       ) : (
@@ -90,6 +96,7 @@ const FirstSection = () => {
             width: "16%",
             left: 60,
             top: window.innerWidth / window.innerHeight >= 0.5 ? "50%" : "45%",
+            zIndex: 2,
           }}
         />
       )}
@@ -108,7 +115,7 @@ const FirstSection = () => {
           onClick={() => {
             setOpen2(!isOpen2);
           }}
-          style={{ position: "absolute", width: "30%", right: "10%", top: "41%" }}
+          style={{ position: "absolute", width: "30%", right: "10%", top: "41%", zIndex: 1 }}
         />
       ) : (
         <img
@@ -116,7 +123,7 @@ const FirstSection = () => {
           onClick={() => {
             setOpen2(!isOpen2);
           }}
-          style={{ position: "absolute", width: "15%", right: "10%", top: "41%" }}
+          style={{ position: "absolute", width: "15%", right: "10%", top: "41%", zIndex: 2 }}
         />
       )}
       <Modal

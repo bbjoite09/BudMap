@@ -18,7 +18,7 @@ const Chat = (props) => {
         marginTop: "7%",
         boxShadow: " 0px 0px 20px rgba(70, 70, 70, 0.6)",
         position: "relative",
-        zIndex: 10,
+        zIndex: 100,
       }}
     >
       <img

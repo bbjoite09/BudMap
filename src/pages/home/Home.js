@@ -22,13 +22,19 @@ import { saveCookie } from "../../api/kakao.api";
 import { getStampList } from "../../api/stamp.api";
 import BottomSlider from "../../elements/BottomSlider";
 import { getCookie, setCookie } from "../../services/cookie";
+import chatBubbble from "../../static/strings/chatBubble";
 
 const Home = () => {
   const [next, setNext] = useState(0);
   const [stampCount, setStampCount] = useState(0);
+  const [isOpen, setOpen] = useState("");
 
   const setChat = (num) => {
-    if (getCookie("visit")) {
+    if (isOpen && stampCount == 5) {
+      return chatBubbble.stampOpen[1];
+    } else if (isOpen) {
+      return chatBubbble.stampOpen[0];
+    } else if (getCookie("visit") || stampCount) {
       return string.clickIcon[num];
     } else {
       return string.chatTutorial[next];
@@ -146,7 +152,7 @@ const Home = () => {
         )}
       </Link>
 
-      <BottomSlider stampCount={stampCount} />
+      <BottomSlider stampCount={stampCount} setOpen={setOpen} />
     </div>
   );
 };
