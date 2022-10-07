@@ -31,7 +31,6 @@ const BackgroundStyle = styled.div`
 
 const Container = styled.div`
   max-width: 500px;
-  height: 100vh;
   margin: 0 auto;
   overflow: hidden;
   background-repeat: no-repeat;

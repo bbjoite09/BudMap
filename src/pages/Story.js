@@ -35,7 +35,13 @@ const Story = () => {
           marginTop: "15%",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+          }}
+        >
           <Typing
             Tag="div"
             speed={30}
@@ -120,11 +126,11 @@ const Story = () => {
         <div
           style={{
             width: "100%",
-            height: "100vh",
             backgroundColor: "black",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            height: `${/iPhone|iPad|iPod/i.test(navigator.userAgent) ? "-webkit-fill-available" : "100vh"}`,
           }}
         >
           <Typing
@@ -225,7 +231,7 @@ const Story = () => {
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: ${/iPhone|iPad|iPod/i.test(navigator.userAgent) ? "-webkit-fill-available" : "100vh"};
   background-color: #83c4d6;
   display: flex;
   alignitems: flex-start;
