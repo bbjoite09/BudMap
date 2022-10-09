@@ -26,7 +26,7 @@ const FirstSection = () => {
   const [stampCount, setStampCount] = useState(0);
   const [isAnswer, setAnswer] = useState("");
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
-  const [isOpen, setOpen] = useState("");
+  const [isOpen, setOpen] = useState(" ");
 
   useEffect(() => {
     getStampList().then((res) => setStampCount(res.length));
@@ -43,13 +43,16 @@ const FirstSection = () => {
       return chatBubbble.QuizeYes[0];
     } else if (isAnswer == "null") {
       return " ";
+    } else if (isOpen1 && localStorage["rice"]) {
+      return chatBubbble.QuizeDone;
+    } else if (isOpen2 && localStorage["fish"]) {
+      return chatBubbble.QuizeDone;
     } else if (isOpen1 || isOpen2) {
       return string.storeInfo.stamp.describe;
     } else {
       return string.clickIcon[num];
     }
   };
-  console.log(isAnswer);
 
   return (
     <div
@@ -87,6 +90,7 @@ const FirstSection = () => {
         />
       ) : (
         <img
+          id="rice"
           src={ic1}
           onClick={() => {
             setOpen1(!isOpen1);
@@ -119,6 +123,7 @@ const FirstSection = () => {
         />
       ) : (
         <img
+          id="fish"
           src={ic2}
           onClick={() => {
             setOpen2(!isOpen2);
@@ -135,7 +140,7 @@ const FirstSection = () => {
         logo={ic2}
         setAnswer={setAnswer}
       />
-      <BottomSlider stampCount={stampCount} />
+      <BottomSlider stampCount={stampCount} setOpen={setOpen} />
     </div>
   );
 };

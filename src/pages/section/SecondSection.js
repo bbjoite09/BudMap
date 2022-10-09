@@ -33,7 +33,7 @@ const SecondSection = () => {
   const [isAnswer, setAnswer] = useState("");
   const [stampCount, setStampCount] = useState(0);
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
-  const [isOpen, setOpen] = useState("");
+  const [isOpen, setOpen] = useState(" ");
 
   useEffect(() => {
     getStampList().then((res) => setStampCount(res.length));
@@ -50,6 +50,12 @@ const SecondSection = () => {
       return chatBubbble.QuizeYes[0];
     } else if (isAnswer == "null") {
       return " ";
+    } else if (isOpen3 && localStorage["china"]) {
+      return chatBubbble.QuizeDone;
+    } else if (isOpen4 && localStorage["meat"]) {
+      return chatBubbble.QuizeDone;
+    } else if (isOpen5 && localStorage["hanra"]) {
+      return chatBubbble.QuizeDone;
     } else if (isOpen3 || isOpen4 || isOpen5) {
       return string.storeInfo.stamp.describe;
     } else {
@@ -96,6 +102,7 @@ const SecondSection = () => {
         />
       ) : (
         <img
+          id="china"
           src={ic3}
           onClick={() => {
             setOpen3(!isOpen3);
@@ -123,6 +130,7 @@ const SecondSection = () => {
         />
       ) : (
         <img
+          id="meat"
           src={ic4}
           onClick={() => {
             setOpen4(!isOpen4);
@@ -149,6 +157,7 @@ const SecondSection = () => {
         />
       ) : (
         <img
+          id="hanra"
           src={ic5}
           onClick={() => {
             setOpen5(!isOpen5);
@@ -165,7 +174,7 @@ const SecondSection = () => {
         logo={ic5}
         setAnswer={setAnswer}
       />
-      <BottomSlider stampCount={stampCount} />
+      <BottomSlider stampCount={stampCount} setOpen={setOpen} />
     </div>
   );
 };
