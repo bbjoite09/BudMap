@@ -81,7 +81,7 @@ const MyModal = (props) => {
               top: 0,
               left: 0,
               background: "rgba(40, 40, 40, 0.5)",
-              zIndex: 5,
+              zIndex: 25,
             }}
             onClick={() => {
               setQuize(false);
@@ -104,7 +104,7 @@ const MyModal = (props) => {
               top: "16%",
               left: "50%",
               transform: "translate(-50%, 0)",
-              zIndex: 10,
+              zIndex: 26,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -171,7 +171,7 @@ const MyModal = (props) => {
                 top: "16%",
                 left: "50%",
                 transform: "translate(-50%, 0)",
-                zIndex: 10,
+                zIndex: 26,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",

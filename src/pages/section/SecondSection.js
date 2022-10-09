@@ -33,7 +33,7 @@ const SecondSection = () => {
   const [isAnswer, setAnswer] = useState("");
   const [stampCount, setStampCount] = useState(0);
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
-  const [isOpen, setOpen] = useState(" ");
+  const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
     getStampList().then((res) => setStampCount(res.length));

@@ -26,7 +26,7 @@ const FirstSection = () => {
   const [stampCount, setStampCount] = useState(0);
   const [isAnswer, setAnswer] = useState("");
   const homeSrc = `/home?token=${getCookie("accesstoken")}`;
-  const [isOpen, setOpen] = useState(" ");
+  const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
     getStampList().then((res) => setStampCount(res.length));

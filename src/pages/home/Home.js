@@ -27,7 +27,7 @@ import chatBubbble from "../../static/strings/chatBubble";
 const Home = () => {
   const [next, setNext] = useState(0);
   const [stampCount, setStampCount] = useState(0);
-  const [isOpen, setOpen] = useState(" ");
+  const [isOpen, setOpen] = useState(false);
 
   const setChat = (num) => {
     if (isOpen && stampCount == 5) {
