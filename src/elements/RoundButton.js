@@ -4,6 +4,7 @@ import Typography from "./Typography";
 
 const RoundButton = (props) => {
   const { children, color, width, margin, onClick, disabled, height, id } = props;
+  const id2 = id + "1";
 
   return (
     <>
@@ -23,7 +24,9 @@ const RoundButton = (props) => {
         onClick={onClick}
         disabled={disabled ? disabled : null}
       >
-        <Typography type="button">{children}</Typography>
+        <Typography type="button" id={id2}>
+          {children}
+        </Typography>
       </button>
     </>
   );

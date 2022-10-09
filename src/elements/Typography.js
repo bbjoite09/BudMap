@@ -2,7 +2,7 @@ import React from "react";
 
 const Typography = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { children, onClick, type, margin, color, position, right, left, top, bottom, fontSize, zIndex } = props;
+  const { children, onClick, type, margin, color, position, right, left, top, bottom, fontSize, zIndex, id } = props;
   const title = {
     fontWeight: "700",
     fontSize: "33px",
@@ -61,31 +61,31 @@ const Typography = (props) => {
 
   if (type == "title") {
     return (
-      <p style={title} onClick={onClick}>
+      <p id={id} style={title} onClick={onClick}>
         {children}
       </p>
     );
   } else if (type == "button") {
     return (
-      <p style={button} onClick={onClick}>
+      <p id={id} style={button} onClick={onClick}>
         {children}
       </p>
     );
   } else if (type == "speech") {
     return (
-      <p style={speech} onClick={onClick}>
+      <p id={id} style={speech} onClick={onClick}>
         {children}
       </p>
     );
   } else if (type == "quize") {
     return (
-      <p style={quize} onClick={onClick}>
+      <p id={id} style={quize} onClick={onClick}>
         {children}
       </p>
     );
   } else {
     return (
-      <p style={basicStyle} onClick={onClick}>
+      <p id={id} style={basicStyle} onClick={onClick}>
         {children}
       </p>
     );

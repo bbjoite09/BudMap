@@ -66,7 +66,7 @@ const Home = () => {
         style={{
           position: "absolute",
           width: "100%",
-          marginTop: window.innerWidth <= 500 ? "38%" : "27%",
+          marginTop: window.innerWidth <= 500 ? "35%" : "15%",
           objectFit: "cover",
         }}
       />

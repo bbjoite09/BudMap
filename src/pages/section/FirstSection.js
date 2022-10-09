@@ -65,7 +65,15 @@ const FirstSection = () => {
         position: "relative",
       }}
     >
-      <img src={sectionBackground} style={{ position: "absolute", width: "100%", objectFit: "cover", top: "0%" }} />
+      <img
+        src={sectionBackground}
+        style={{
+          position: "absolute",
+          width: "100%",
+          objectFit: "cover",
+          top: window.innerWidth <= 500 ? 0 : "-6%",
+        }}
+      />
       <Chat>{setChat(stampCount)}</Chat>
       <Link to={homeSrc}>
         <img src={homeButton} style={{ position: "absolute", width: "13%", left: 70, bottom: "9vh" }} />
