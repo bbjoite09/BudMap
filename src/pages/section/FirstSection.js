@@ -71,7 +71,7 @@ const FirstSection = () => {
           position: "absolute",
           width: "100%",
           objectFit: "cover",
-          top: window.innerWidth <= 500 ? 0 : "-6%",
+          top: window.innerWidth <= 500 ? 0 : "-10%",
         }}
       />
       <Chat>{setChat(stampCount)}</Chat>
@@ -91,8 +91,8 @@ const FirstSection = () => {
           style={{
             position: "absolute",
             width: "18%",
-            left: 60,
-            top: window.innerWidth / window.innerHeight >= 0.5 ? "50%" : "45%",
+            left: 40,
+            top: window.innerWidth <= 500 ? "47%" : "46%",
             zIndex: 1,
           }}
         />
@@ -128,7 +128,7 @@ const FirstSection = () => {
           onClick={() => {
             setOpen2(!isOpen2);
           }}
-          style={{ position: "absolute", width: "30%", right: "10%", top: "41%", zIndex: 1 }}
+          style={{ position: "absolute", width: "30%", right: "5%", top: "37%", zIndex: 1 }}
         />
       ) : (
         <img
@@ -137,7 +137,7 @@ const FirstSection = () => {
           onClick={() => {
             setOpen2(!isOpen2);
           }}
-          style={{ position: "absolute", width: "15%", right: "10%", top: "41%", zIndex: 2 }}
+          style={{ position: "absolute", width: "13%", right: "5%", top: "36%", zIndex: 2 }}
         />
       )}
       <Modal

@@ -66,7 +66,7 @@ const Home = () => {
         style={{
           position: "absolute",
           width: "100%",
-          marginTop: window.innerWidth <= 500 ? "35%" : "15%",
+          top: "17%",
           objectFit: "cover",
         }}
       />
@@ -92,7 +92,7 @@ const Home = () => {
         {localStorage.getItem("rice") ? (
           <img src={stamp1} style={{ position: "absolute", width: "16%", top: "35%", right: 100, zIndex: 15 }} />
         ) : (
-          <img src={ic1} style={{ position: "absolute", width: "15%", top: "35%", right: 100, zIndex: 15 }} />
+          <img src={ic1} style={{ position: "absolute", width: "12%", top: "35%", right: 100, zIndex: 15 }} />
         )}
       </Link>
       <Link
@@ -106,7 +106,7 @@ const Home = () => {
         {localStorage.getItem("fish") ? (
           <img src={stamp2} style={{ position: "absolute", width: "25%", top: "40%", right: 15, zIndex: 15 }} />
         ) : (
-          <img src={ic2} style={{ position: "absolute", width: "13%", top: "40%", right: 15, zIndex: 15 }} />
+          <img src={ic2} style={{ position: "absolute", width: "10%", top: "37%", right: 15, zIndex: 15 }} />
         )}
       </Link>
       <Link
@@ -120,7 +120,7 @@ const Home = () => {
         {localStorage.getItem("china") ? (
           <img src={stamp3} style={{ position: "absolute", width: "20%", top: "57%", left: 25, zIndex: 1 }} />
         ) : (
-          <img src={ic3} style={{ position: "absolute", width: "16%", top: "57%", left: 25, zIndex: 2 }} />
+          <img src={ic3} style={{ position: "absolute", width: "14%", top: "55%", left: 25, zIndex: 2 }} />
         )}
       </Link>
       <Link
@@ -134,7 +134,7 @@ const Home = () => {
         {localStorage.getItem("meat") ? (
           <img src={stamp4} style={{ position: "absolute", width: "20%", top: "55%", left: 120, zIndex: 1 }} />
         ) : (
-          <img src={ic4} style={{ position: "absolute", width: "16%", top: "55%", left: 120, zIndex: 2 }} />
+          <img src={ic4} style={{ position: "absolute", width: "13%", top: "56%", left: 120, zIndex: 2 }} />
         )}
       </Link>
       <Link
@@ -148,7 +148,7 @@ const Home = () => {
         {localStorage.getItem("hanra") ? (
           <img src={stamp5} style={{ position: "absolute", width: "20%", top: "48%", left: 90, zIndex: 1 }} />
         ) : (
-          <img src={ic5} style={{ position: "absolute", width: "15%", top: "48%", left: 90, zIndex: 2 }} />
+          <img src={ic5} style={{ position: "absolute", width: "13%", top: "49%", left: 90, zIndex: 2 }} />
         )}
       </Link>
 

@@ -9,7 +9,6 @@ const RoundButton = (props) => {
   return (
     <>
       <button
-        id={id}
         style={{
           display: "flex",
           alignItems: "center",

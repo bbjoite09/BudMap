@@ -155,7 +155,7 @@ const SecondSection = () => {
           onClick={() => {
             setOpen5(!isOpen5);
           }}
-          style={{ position: "absolute", width: "18%", left: "15%", top: "39%", zIndex: 1 }}
+          style={{ position: "absolute", width: "18%", left: "25%", top: "37%", zIndex: 1 }}
         />
       ) : (
         <img
@@ -164,7 +164,7 @@ const SecondSection = () => {
           onClick={() => {
             setOpen5(!isOpen5);
           }}
-          style={{ position: "absolute", width: "18%", left: "15%", top: "39%", zIndex: 2 }}
+          style={{ position: "absolute", width: "18%", left: "25%", top: "40%", zIndex: 2 }}
         />
       )}
       <Modal
