@@ -38,7 +38,7 @@ const saveStamp = async (num) => {
 
 const MyModal = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { isOpen, setOpen, storeNum, src1, src2, logo, setAnswer } = props;
+  const { isOpen, setOpen, storeNum, src1, src2, logo, setAnswer, id } = props;
   const [isQuize, setQuize] = useState(false);
   const [isCorrect, setCorrect] = useState(["#C6C6C6", "#C6C6C6", "#C6C6C6"]);
   const [isLoading, setLoading] = useState(false);
@@ -143,6 +143,7 @@ const MyModal = (props) => {
               </MySlider>
             </>
             <RoundButton
+              id={id}
               color={localStorage[changeKeyName(parseInt(storeNumConverter(storeNum[5])))] ? "#C6C6C6" : "#ACDDC0"}
               width="80%"
               margin="19px 0 19px 0"

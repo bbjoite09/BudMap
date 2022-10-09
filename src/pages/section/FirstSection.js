@@ -105,6 +105,7 @@ const FirstSection = () => {
         />
       )}
       <Modal
+        id="rice_btn"
         isOpen={isOpen1}
         setOpen={setOpen1}
         storeNum={"store1"}
@@ -132,6 +133,7 @@ const FirstSection = () => {
         />
       )}
       <Modal
+        id="fish_btn"
         isOpen={isOpen2}
         setOpen={setOpen2}
         storeNum={"store2"}

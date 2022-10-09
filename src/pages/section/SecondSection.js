@@ -111,6 +111,7 @@ const SecondSection = () => {
         />
       )}
       <Modal
+        id="china_btn"
         isOpen={isOpen3}
         setOpen={setOpen3}
         storeNum={"store3"}
@@ -139,6 +140,7 @@ const SecondSection = () => {
         />
       )}
       <Modal
+        id="meat_btn"
         isOpen={isOpen4}
         setOpen={setOpen4}
         storeNum={"store4"}
@@ -166,6 +168,7 @@ const SecondSection = () => {
         />
       )}
       <Modal
+        id="hanra_btn"
         isOpen={isOpen5}
         setOpen={setOpen5}
         storeNum={"store5"}
