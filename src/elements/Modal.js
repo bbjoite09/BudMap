@@ -75,7 +75,7 @@ const MyModal = (props) => {
   const copyAlert = () => {
     setTimeout(() => {
       setCopy(false);
-    }, 3000);
+    }, 3500);
     return (
       isCopy && (
         <div
@@ -99,6 +99,7 @@ const MyModal = (props) => {
       )
     );
   };
+
   return (
     <>
       {isOpen && (
