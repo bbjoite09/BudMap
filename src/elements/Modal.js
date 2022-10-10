@@ -5,13 +5,15 @@ import "slick-carousel/slick/slick.css";
 import styled from "styled-components";
 import { changeKeyName, getStampList, updateStamp } from "../api/stamp.api";
 import close from "../static/images/modal/close.png";
+import copy from "../static/images/modal/copyIcon.svg";
+import location from "../static/images/modal/locationIcon.svg";
 import quizeInfo from "../static/strings/quizeInfo";
 import { string } from "../static/strings/string";
 import CorrectEffect from "./CorrectEffect";
 import Loading from "./Loading";
-import WrongEffect from "./WrongEffect";
 import RoundButton from "./RoundButton";
 import Typography from "./Typography";
+import WrongEffect from "./WrongEffect";
 
 export const storeNumConverter = (num) => {
   switch (num) {
@@ -42,6 +44,7 @@ const MyModal = (props) => {
   const [isQuize, setQuize] = useState(false);
   const [isCorrect, setCorrect] = useState(["#C6C6C6", "#C6C6C6", "#C6C6C6"]);
   const [isLoading, setLoading] = useState(false);
+  const [isCopy, setCopy] = useState(false);
 
   const setButtonColor = async (ans, idx) => {
     if (ans == quizeInfo[storeNum].answer) {
@@ -68,7 +71,34 @@ const MyModal = (props) => {
       setAnswer("null");
     }
   };
-
+  // 복사 버튼 알림
+  const copyAlert = () => {
+    setTimeout(() => {
+      setCopy(false);
+    }, 3000);
+    return (
+      isCopy && (
+        <div
+          style={{
+            width: "50%",
+            height: "5vh",
+            backgroundColor: "#bcca68",
+            borderRadius: "15px",
+            position: "absolute",
+            top: "21%",
+            left: "50%",
+            transform: "translate(-50%, 0)",
+            zIndex: 10,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography color="white">복사되었습니다!</Typography>
+        </div>
+      )
+    );
+  };
   return (
     <>
       {isOpen && (
@@ -121,14 +151,59 @@ const MyModal = (props) => {
             >
               <img src={close} />
             </button>
-            <Typography type="title" margin="0">
+            <Typography type="title" margin="0 0 2% 0">
               {string.storeInfo[storeNum].title}
             </Typography>
-            <Typography margin="3% 0 1% 0">{string.storeInfo[storeNum].describe}</Typography>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "80%",
+              }}
+            >
+              <img src={location} style={{ width: "13px", height: "13px" }} />
+              <a
+                href={string.storeInfo[storeNum].href}
+                style={{
+                  fontWeight: "500",
+                  fontSize: "13px",
+                  lineHeight: "22px",
+                  whiteSpace: "pre-wrap",
+                  letterSpacing: "-0.02em",
+                  color: "black",
+                  margin: "0 2% 0 2%",
+                }}
+              >
+                {string.storeInfo[storeNum].address}
+              </a>
+              <button
+                style={{ border: "none", backgroundColor: "#00ff0000", height: "13px" }}
+                onClick={() => {
+                  const address = string.storeInfo[storeNum].address;
+                  navigator.clipboard.writeText(address).then(
+                    function () {
+                      setCopy(true);
+                    },
+                    function () {
+                      alert("복사 실패");
+                      /* 복사실패 */
+                    },
+                  );
+                }}
+              >
+                <img src={copy} style={{ height: "13px" }} />
+              </button>
+            </div>
+            {copyAlert()}
+            <Typography type="modalText" margin="2% 0 0 0">
+              {string.storeInfo[storeNum].describe}
+            </Typography>
             <>
               <MySlider
                 {...settings}
-                style={{ zIndex: "0", width: window.innerWidth < 500 ? "108%" : "103%", marginTop: "3%" }}
+                style={{ zIndex: "0", width: window.innerWidth < 500 ? "108%" : "101%", marginTop: "3%" }}
               >
                 <>
                   <div style={{ paddingLeft: "2%" }}>
