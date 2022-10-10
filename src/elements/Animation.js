@@ -116,3 +116,15 @@ export const vibaration = keyframes`{
     background-color: #f2f1ed;
   }
 }`;
+
+const typing = keyframes`{
+  from { width: 0 }
+  to { width: 100% }
+}`;
+
+export const TextStyle = styled.p`
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: ${typing} 3.5s steps(40, end);
+`;

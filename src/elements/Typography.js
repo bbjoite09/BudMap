@@ -1,11 +1,27 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 
 const Typography = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const { children, onClick, type, margin, color, position, right, left, top, bottom, fontSize, zIndex, id } = props;
+  const {
+    children,
+    onClick,
+    type,
+    margin,
+    color,
+    position,
+    right,
+    left,
+    top,
+    bottom,
+    fontSize,
+    zIndex,
+    id,
+    fontWeight,
+  } = props;
+
   const title = {
     fontWeight: "700",
-    fontSize: "33px",
+    fontSize: "29px",
     lineHeight: "39px",
     whiteSpace: "pre-wrap",
     margin: margin,
@@ -58,6 +74,19 @@ const Typography = (props) => {
     top,
     zIndex,
   };
+  const modalText = {
+    fontWeight: fontWeight ? fontWeight : "700",
+    fontSize: "13px",
+    lineHeight: "22px",
+    whiteSpace: "pre-wrap",
+    letterSpacing: "-0.02em",
+    margin: margin,
+    color,
+    position,
+    right,
+    bottom,
+    zIndex,
+  };
 
   if (type == "title") {
     return (
@@ -80,6 +109,12 @@ const Typography = (props) => {
   } else if (type == "quize") {
     return (
       <p id={id} style={quize} onClick={onClick}>
+        {children}
+      </p>
+    );
+  } else if (type == "modalText") {
+    return (
+      <p id={id} style={modalText} onClick={onClick}>
         {children}
       </p>
     );

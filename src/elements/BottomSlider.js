@@ -17,6 +17,7 @@ import store4_done from "../static/images/stamp/store4_done.png";
 import store4_none from "../static/images/stamp/store4_none.png";
 import store5_done from "../static/images/stamp/store5_done.png";
 import store5_none from "../static/images/stamp/store5_none.png";
+import { TextStyle } from "./Animation";
 import ButtonEffect from "./ButtonEffect";
 
 const BottomSlider = (props) => {
