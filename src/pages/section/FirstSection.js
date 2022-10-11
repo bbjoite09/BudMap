@@ -19,6 +19,7 @@ import store2_2 from "../../static/images/store/store_2_2.jpg";
 import chatBubbble from "../../static/strings/chatBubble";
 import { string } from "../../static/strings/string";
 import Chat from "../home/Chat";
+import link from "../../static/images/linkIcon.png";
 
 const FirstSection = () => {
   const [isOpen1, setOpen1] = useState(false);
@@ -76,6 +77,12 @@ const FirstSection = () => {
           top: window.innerWidth <= 500 ? 0 : "-10%",
         }}
       />
+      <a id="firstMapLink" href={string.storeInfo.mapHref}>
+        <img
+          src={link}
+          style={{ width: "18%", position: "absolute", left: "7.5%", zIndex: 30, top: 67, marginTop: "13%" }}
+        />
+      </a>
       <Chat>{setChat(stampCount)}</Chat>
       <Link to={homeSrc}>
         <img src={homeButton} style={{ position: "absolute", width: "13%", left: 70, bottom: "9vh" }} />

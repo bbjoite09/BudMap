@@ -12,6 +12,7 @@ import ic5 from "../../static/images/store/store5.png";
 import stamp3 from "../../static/images/stamp/store3_done.png";
 import stamp4 from "../../static/images/stamp/store4_done.png";
 import stamp5 from "../../static/images/stamp/store5_done.png";
+import link from "../../static/images/linkIcon.png";
 
 import store3_1 from "../../static/images/store/store_3_1.jpg";
 import store3_2 from "../../static/images/store/store_3_2.jpg";
@@ -80,6 +81,12 @@ const SecondSection = () => {
         src={sectionBackground}
         style={{ position: "absolute", width: "100%", objectFit: "cover", height: "90%", bottom: 0 }}
       />
+      <a id="secMapLink" href={string.storeInfo.mapHref}>
+        <img
+          src={link}
+          style={{ width: "18%", position: "absolute", left: "7.5%", zIndex: 30, top: 67, marginTop: "13%" }}
+        />
+      </a>
       <Chat>{setChat(stampCount)}</Chat>
       <Link to={homeSrc}>
         <img src={homeButton} style={{ position: "absolute", width: "13%", left: 20, bottom: "9vh" }} />
