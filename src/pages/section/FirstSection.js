@@ -35,6 +35,8 @@ const FirstSection = () => {
   const setChat = (num) => {
     if (isOpen && stampCount == 5) {
       return chatBubbble.stampOpen[1];
+    } else if (localStorage["rice"] && localStorage["fish"]) {
+      return chatBubbble.SectionDone;
     } else if (isOpen) {
       return chatBubbble.stampOpen[0];
     } else if (isAnswer == "no") {
