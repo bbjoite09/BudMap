@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import background from "../../static/images/home/background.png";
+import link from "../../static/images/linkIcon.png";
 import cloudBottom from "../../static/images/home/cloudBottom.png";
 import cloudTop from "../../static/images/home/cloudTop.png";
 import stamp1 from "../../static/images/stamp/store1_done.png";
@@ -70,6 +71,12 @@ const Home = () => {
           objectFit: "cover",
         }}
       />
+      <a id="homeMapLink" href={string.storeInfo.mapHref}>
+        <img
+          src={link}
+          style={{ width: "18%", position: "absolute", left: "7.5%", zIndex: 30, top: 67, marginTop: "13%" }}
+        />
+      </a>
       <Chat
         onDone={() => {
           if (next < string.chatTutorial.length - 1) {

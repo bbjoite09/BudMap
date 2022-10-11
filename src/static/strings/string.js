@@ -16,6 +16,7 @@ export const string = {
     "버드나무들을 찾아줘서 고마워!",
   ],
   storeInfo: {
+    mapHref: "https://naver.me/I5ck4msC",
     stamp: { describe: "퀴즈를 맞추면 스탬프를 획득할 수 있어." },
     store1: {
       title: "소문난 떡볶이 순대",
