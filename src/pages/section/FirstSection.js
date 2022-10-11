@@ -80,7 +80,7 @@ const FirstSection = () => {
       <a id="firstMapLink" href={string.storeInfo.mapHref}>
         <img
           src={link}
-          style={{ width: "18%", position: "absolute", left: "7.5%", zIndex: 30, top: 67, marginTop: "13%" }}
+          style={{ width: "18%", position: "absolute", left: "7.5%", zIndex: 14, top: 67, marginTop: "13%" }}
         />
       </a>
       <Chat>{setChat(stampCount)}</Chat>

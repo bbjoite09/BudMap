@@ -21,20 +21,20 @@ const End = () => {
         position: "relative",
       }}
     >
-      <img src={background} style={{ width: "100%", height: "120%" }} />
+      <img src={background} style={{ width: "100%", height: "100vh", objectFit: "cover" }} />
 
       {next == 0 && <AnimationShine src={bubble1} style={{ width: "60%", left: "20%", top: "13%" }} />}
 
       {next == 1 && (
         <>
-          <AnimationShine src={bubble2} style={{ width: "60%", left: "20%", top: "13%" }} />;
+          <AnimationShine src={bubble2} style={{ width: "60%", left: "20%", top: "13%" }} />
           <Chat position="absolute" top="0" left="7.5%">
             이제 리워드를 받을 수 있어!
           </Chat>
           {setTimeout(() => {
             setOpen(true);
           }, 3000)}
-          <FormModal setOpen={setOpen} isOpen={isOpen} setNext={setNext} />;
+          <FormModal setOpen={setOpen} isOpen={isOpen} setNext={setNext} />
         </>
       )}
     </div>
