@@ -19,11 +19,10 @@ import { string } from "../../static/strings/string";
 import Chat from "./Chat";
 
 import styled, { keyframes } from "styled-components";
-import { saveCookie } from "../../api/kakao.api";
-import { getStampList } from "../../api/stamp.api";
 import BottomSlider from "../../elements/BottomSlider";
 import { getCookie, setCookie } from "../../services/cookie";
 import chatBubbble from "../../static/strings/chatBubble";
+import { getStamp, getStampList } from "../../services/stamp";
 
 const Home = () => {
   const [next, setNext] = useState(0);
@@ -43,14 +42,10 @@ const Home = () => {
   };
 
   useEffect(() => {
-    saveCookie();
-    if (getCookie("accesstoken")) {
-      getStampList().then((res) => {
-        setStampCount(res.length);
-        console.log("결과", res.length);
-      });
-    }
+    const count = getStampList();
+    setStampCount(count);
   }, [localStorage["china"], localStorage["meat"], localStorage["rice"], localStorage["hanra"], localStorage["fish"]]);
+
   return (
     <div
       style={{

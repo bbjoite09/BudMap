@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Typing from "react-kr-typing-anim";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AnimationBig, AnimationForLogin, AnimationTB } from "../elements/Animation";
-import Loading from "../elements/Loading";
 import Typography from "../elements/Typography";
 import background from "../static/images/story/background.png";
-import kakaoLoginButton from "../static/images/story/kakaoLoginButton.png";
 import loginDescribe from "../static/images/story/loginDescribe.png";
+import startButton from "../static/images/story/startButton.png";
 import logo from "../static/images/story/logo.png";
 import speech1 from "../static/images/story/speech1.png";
 import speech2 from "../static/images/story/speech2.png";
@@ -18,11 +18,9 @@ import background2_2 from "../static/images/story/storyBackground2_2.png";
 import background3 from "../static/images/story/storyBackground3.png";
 import background4 from "../static/images/story/storyBackground4.png";
 import story from "../static/strings/story";
-import { axiosUrl } from "../static/url/axiosSrc";
 
 const Story = () => {
   const [storyState, setStoryState] = useState(0);
-  const [isLoading, setLoading] = useState(false);
 
   const getStory = (num, time1, color, time2) => {
     return (
@@ -203,26 +201,30 @@ const Story = () => {
               top: "0%",
             }}
           />
-          <img src={logo} style={{ position: "absolute", width: "70%", top: "10%", left: "15%" }} />
-          <AnimationForLogin src={loginDescribe} />
-          <a
-            href={axiosUrl.createUser}
-            onClick={() => {
-              setLoading(true);
+          <div
+            style={{
+              position: "absolute",
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              height: "40vh",
+              alignItems: "center",
+              justifyContent: "space-around",
+              paddingTop: "10%",
             }}
           >
-            <img
-              src={kakaoLoginButton}
-              style={{
-                position: "absolute",
-                width: "70%",
-                top: "33%",
-                zIndex: 10,
-                left: "15%",
-              }}
-            />
-          </a>
-          {isLoading && <Loading />}
+            <img src={logo} style={{ width: "70%" }} />
+            <AnimationForLogin src={loginDescribe} />
+            <Link to="/home" onClick={() => {}}>
+              <img
+                src={startButton}
+                style={{
+                  width: "70%",
+                  zIndex: 10,
+                }}
+              />
+            </Link>
+          </div>
         </Container>
       )}
     </div>
