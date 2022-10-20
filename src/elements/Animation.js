@@ -86,24 +86,20 @@ export const AnimationTB = styled.img`
 
 const moveForLogin = keyframes`{
   0% {
-    top: 20%;
+    transform: translateY(10px);
   }
   50% {
-    top: 22%;
+    transform: translateY(-10px);
   }
-  100%{
-    top: 20%;
+  100% {
+    transform: translateY(10px);
   }
 }`;
 
 export const AnimationForLogin = styled.img`
-  position: absolute;
   animation: ${moveForLogin} 2s linear infinite;
   z-index: 15;
-  position: absolute;
   width: 55%;
-  top: 80%;
-  left: 22.5%;
 `;
 
 export const vibaration = keyframes`{

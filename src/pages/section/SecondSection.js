@@ -24,8 +24,8 @@ import store5_1 from "../../static/images/store/store_5_1.jpg";
 import BottomSlider from "../../elements/BottomSlider";
 import Modal from "../../elements/Modal";
 import { getCookie } from "../../services/cookie";
-import { getStampList } from "../../api/stamp.api";
 import chatBubbble from "../../static/strings/chatBubble";
+import { getStampList } from "../../services/stamp";
 
 const SecondSection = () => {
   const [isOpen3, setOpen3] = useState(false);
@@ -37,7 +37,8 @@ const SecondSection = () => {
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
-    getStampList().then((res) => setStampCount(res.length));
+    const count = getStampList();
+    setStampCount(count);
   }, [localStorage["china"], localStorage["meat"], localStorage["rice"], localStorage["hanra"], localStorage["fish"]]);
 
   const setChat = (num) => {

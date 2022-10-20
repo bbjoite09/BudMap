@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import styled from "styled-components";
-import { changeKeyName, getStampList, updateStamp } from "../api/stamp.api";
+import { changeKeyName, setStamp } from "../services/stamp";
 import close from "../static/images/modal/close.png";
 import copy from "../static/images/modal/copyIcon.svg";
 import location from "../static/images/modal/locationIcon.svg";
@@ -14,29 +14,6 @@ import Loading from "./Loading";
 import RoundButton from "./RoundButton";
 import Typography from "./Typography";
 import WrongEffect from "./WrongEffect";
-
-export const storeNumConverter = (num) => {
-  switch (num) {
-    case "1":
-      return 5;
-    case "2":
-      return 2;
-    case "3":
-      return 1;
-    case "4":
-      return 4;
-    case "5":
-      return 3;
-  }
-};
-
-const saveStamp = async (num) => {
-  /**
-   * 1 : 중국성, 2 : 장어, 3 : 한라산 도새기, 4 : 고기가 맛있는 집, 5 : 떡볶이
-   * 저장하고 싶은 것 넣기, 중복 저장 안 됨
-   */
-  await updateStamp(num);
-};
 
 const MyModal = (props) => {
   // eslint-disable-next-line react/prop-types
@@ -54,15 +31,14 @@ const MyModal = (props) => {
         setLoading(true);
         setCorrect([...isCorrect.slice(0, idx), "#C6C6C6", ...isCorrect.slice(idx + 1)]);
       }, [900]);
-      const serverStoreNum = storeNumConverter(storeNum[5]);
-      await saveStamp(serverStoreNum);
-      await getStampList();
+
+      setStamp(storeNum[5]);
       setTimeout(() => {
         setOpen(false);
         setQuize(false);
         setAnswer(" ");
         setLoading(false);
-      }, [3500]);
+      }, [1500]);
     } else if (ans != quizeInfo[storeNum].answer) {
       setTimeout(() => {
         setAnswer("no");
@@ -220,17 +196,15 @@ const MyModal = (props) => {
             </>
             <RoundButton
               id={id}
-              color={localStorage[changeKeyName(parseInt(storeNumConverter(storeNum[5])))] ? "#C6C6C6" : "#ACDDC0"}
+              color={localStorage[changeKeyName(storeNum[5])] ? "#C6C6C6" : "#ACDDC0"}
               width="80%"
               margin="19px 0 19px 0"
               onClick={() => {
                 setQuize(true);
               }}
-              disabled={localStorage[changeKeyName(parseInt(storeNumConverter(storeNum[5])))] ? "disabled" : null}
+              disabled={localStorage[changeKeyName(storeNum[5])] ? "disabled" : null}
             >
-              {localStorage[changeKeyName(parseInt(storeNumConverter(storeNum[5])))]
-                ? "퀴즈를 풀었어요!"
-                : "퀴즈를 풀어볼까요?"}
+              {localStorage[changeKeyName(storeNum[5])] ? "퀴즈를 풀었어요!" : "퀴즈를 풀어볼까요?"}
             </RoundButton>
           </div>
           {/* -------------------------------------------------------------  */}
